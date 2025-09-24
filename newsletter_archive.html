@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Berlin Daily - Newsletter Archive</title>
+    <title>Berlin News Daily - Newsletter Archive</title>
+    <meta name="description" content="The complete archive of the Berlin Daily newsletter.">
+    <!-- This template uses inline CSS to match your existing newsletter style -->
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -11,11 +13,11 @@
             margin: 0;
             padding: 0;
             background: white;
-            color: #333;
+            color: #111827; /* A dark gray for text */
             min-height: 100vh;
         }
         .container {
-            max-width: 650px;
+            max-width: 1000px; /* Updated max-width */
             margin: 0 auto;
             padding: 20px;
             background: #fff;
@@ -23,12 +25,14 @@
         .header {
             text-align: center;
             padding: 32px 0;
+            border-bottom: 1px solid #e5e7eb;
+            margin-bottom: 32px;
         }
         .logo {
             width: 120px;
             height: 120px;
             transition: opacity 0.3s;
-            margin: 0 auto 32px auto;
+            margin: 0 auto;
             display: block;
         }
         .logo:hover {
@@ -39,19 +43,6 @@
             font-weight: bold;
             color: black;
             margin-bottom: 32px;
-        }
-        h2 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin: 1.5rem 0 1rem 0;
-        }
-        h3 {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin: 1.25rem 0 0.75rem 0;
-        }
-        p {
-            margin: 1rem 0;
         }
         a {
             color: #2563eb;
@@ -68,87 +59,126 @@
         .text-center {
             text-align: center;
         }
-
-        /* Styles for Archive Specific Elements */
-        .featured-issue {
-            padding: 2rem;
-            border: 1px solid #e5e7eb;
-            border-radius: 12px;
-            margin-bottom: 3rem;
-        }
-        .featured-issue h2 {
-            font-size: 2rem;
-            margin-top: 0;
-        }
-        .featured-issue a.read-now {
-            display: inline-block;
-            background-color: #111;
-            color: white;
-            padding: 12px 20px;
-            border-radius: 8px;
-            font-weight: 600;
-            margin-top: 1rem;
+        /* Archive-specific styles */
+        .search-container {
+            max-width: 600px;
+            margin: 0 auto 32px auto; /* Centered with bottom margin */
         }
         .search-input {
             width: 100%;
             padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
             font-size: 1rem;
-            margin-bottom: 1rem;
-        }
-        .filter-buttons button {
-            padding: 8px 16px;
-            border: 1px solid #ccc;
+            border: 1px solid #d1d5db;
             border-radius: 8px;
-            background: white;
+            box-sizing: border-box; /* Important for padding and width */
+        }
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 16px;
+            flex-wrap: wrap;
+        }
+        .year-btn {
+            background-color: #f3f4f6;
+            border: 1px solid #d1d5db;
+            padding: 8px 16px;
+            border-radius: 20px;
             cursor: pointer;
-            margin-right: 8px;
-            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.2s;
         }
-        .filter-buttons button.active {
-            background: #111;
+        .year-btn:hover {
+            background-color: #e5e7eb;
+        }
+        .year-btn.active {
+            background-color: #111827;
             color: white;
-            border-color: #111;
-        }
-        .newsletter-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-        .card {
-            border: 1px solid #e5e7eb;
-            padding: 1.5rem;
-            border-radius: 12px;
-            transition: box-shadow 0.3s ease;
-        }
-        .card:hover {
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-        }
-        .card p {
-            margin: 0.5rem 0;
-        }
-        .card .date {
-            color: #666;
-            font-size: 0.9rem;
-        }
-        .card h4 {
-            font-size: 1.25rem;
-            margin: 0.25rem 0 0.5rem 0;
+            border-color: #111827;
         }
         
-        @media (min-width: 768px) {
-            .logo {
-                width: 150px;
-                height: 150px;
-            }
-            h1 {
-                font-size: 2.5rem;
-            }
+        /* Updated Responsive Grid */
+        .newsletter-grid {
+            display: grid;
+            grid-template-columns: 1fr; /* 1 column by default */
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+        @media (min-width: 400px) {
             .newsletter-grid {
-                grid-template-columns: 1fr 1fr;
+                grid-template-columns: repeat(2, 1fr); /* 2 columns */
             }
+        }
+        @media (min-width: 700px) {
+            .newsletter-grid {
+                grid-template-columns: repeat(3, 1fr); /* 3 columns */
+            }
+        }
+
+        .newsletter-card {
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 20px;
+            transition: box-shadow 0.2s, transform 0.2s;
+            background-color: #fff;
+            display: flex;
+            flex-direction: column;
+        }
+        .newsletter-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transform: translateY(-2px);
+        }
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin: 0 0 8px 0;
+        }
+        .card-date {
+            font-size: 0.9rem;
+            color: #6b7280;
+            margin-bottom: 12px;
+        }
+        .card-excerpt {
+            font-size: 1rem;
+            color: #374151;
+            flex-grow: 1;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* Pagination Styles */
+        .pagination-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            margin-top: 32px;
+        }
+        .page-btn {
+            border: 1px solid #d1d5db;
+            background-color: #fff;
+            color: #374151;
+            border-radius: 8px;
+            min-width: 40px;
+            height: 40px;
+            padding: 0 8px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        .page-btn:hover {
+            background-color: #f9fafb;
+        }
+        .page-btn.active {
+            background-color: #111827;
+            color: white;
+            border-color: #111827;
+        }
+        footer {
+            /* Add this to center the form */
+            display: flex;
+            justify-content: center;
         }
     </style>
 </head>
@@ -162,308 +192,139 @@
         </header>
 
         <main>
-            <!-- Featured Latest Issue -->
-            <section class="featured-issue">
-                <p style="color: #666; font-weight: bold; font-size: 0.9rem;">LATEST ISSUE</p>
-                <h2 id="latest-issue-title">Welcome to the Archive</h2>
-                <p id="latest-issue-excerpt">Our latest issue will be displayed here. Browse past newsletters below.</p>
-                <a href="#" id="latest-issue-link" class="read-now">Read Now &rarr;</a>
-            </section>
-
             <!-- Search and Filter Section -->
-            <section>
-                <h3>Explore the Archive</h3>
-                <input type="text" id="searchInput" placeholder="Search by keyword..." class="search-input">
-                <div id="year-filter-buttons" class="filter-buttons">
-                    <!-- Year filter buttons will be generated by JS -->
+            <div class="search-container">
+                <input type="text" id="searchInput" class="search-input" placeholder="Search by title or keyword...">
+                <div id="filterButtons" class="filter-buttons">
+                    <!-- Year buttons will be dynamically generated here -->
                 </div>
-            </section>
+            </div>
 
-            <!-- Newsletter Grid -->
-            <section id="newsletter-grid" class="newsletter-grid">
-                <!-- Newsletter items will be injected here by JS -->
-            </section>
+            <!-- Results Grid -->
+            <div id="resultsGrid" class="newsletter-grid">
+                <!-- Newsletter cards will be injected here by JavaScript -->
+            </div>
             
-            <div id="no-results" class="hidden text-center" style="padding: 3rem 0;">
-                <h3>No Newsletters Found</h3>
-                <p>Try adjusting your search or filter criteria.</p>
+            <!-- No Results Message -->
+            <p id="noResults" class="text-center hidden" style="color: #6b7280; padding: 40px 0;">No newsletters found matching your criteria.</p>
+
+            <!-- Pagination Controls -->
+            <div id="paginationContainer" class="pagination-container">
+                <!-- Page buttons will be injected here -->
             </div>
         </main>
         
         <hr>
-
+        
         <footer class="text-center">
-            <script async data-uid="7cfab03e55" src="https://berlindaily.kit.com/7cfab03e55/index.js"></script>
+             <script async data-uid="7cfab03e55" src="https://berlindaily.kit.com/7cfab03e55/index.js"></script>
         </footer>
     </div>
 
     <script>
-        // IMPORTANT: The build script will replace the next line with the actual newsletter data.
-        const newsletters = [
-    {
-        "title": "🏠 Berlin sublet rent-cap test, Heating costs jump, AfD overtakes Union - Berlin News Daily",
-        "date": "September 24, 2025",
-        "year": "2025",
-        "excerpt": " Germany’s Federal Court of Justice is hearing a Berlin case on whether the rent cap applies to sublets, after a tenant sublet a €460 apartment for €962 without permission; the landlord seeks termination.",
-        "href": "archive/20250924-berlin-sublet-rentcap-test-heating-costs-jump-afd-overtakes-union.html"
-    },
-    {
-        "title": "✈️ BER cyber delays, Berlin police overhaul, job losses soar - Berlin News Daily",
-        "date": "September 23, 2025",
-        "year": "2025",
-        "excerpt": " Three days after a cyberattack on IT provider Collins Aerospace, Berlin Brandenburg Airport reported widespread disruption Monday, with about 70% of departures delayed—many by over an hour—long queues, and at least one cancellation, as staff handled check-in and baggage using manual processes.",
-        "href": "archive/20250923-ber-cyber-delays-berlin-police-overhaul-job-losses-soar.html"
-    },
-    {
-        "title": "🏛️ 48-hour workweek plan, Cannabis Act backlash, Styles sub-3h marathon - Berlin News Daily",
-        "date": "September 22, 2025",
-        "year": "2025",
-        "excerpt": " Germany’s government plans to overhaul the Working Hours Act by replacing daily limits with a 48-hour weekly cap, prompting sharp criticism from the Hugo Sinzheimer Institute.  ",
-        "href": "archive/20250922-48hour-workweek-plan-cannabis-act-backlash-styles-sub3h-marathon.html"
-    },
-    {
-        "title": "🏠 Student rents +74%, Club assaults rise, Airports disrupted by cyberattack - Berlin News Daily",
-        "date": "September 21, 2025",
-        "year": "2025",
-        "excerpt": " A study by the research institute Empirica finds that rents for rooms in student flat-shares in Germany have risen 74% since 2012, roughly twice the increase in consumer prices, with major city gaps (about €750 in Munich versus €350 in Siegen).",
-        "href": "archive/20250921-student-rents-74-club-assaults-rise-airports-disrupted-by-cyberattack.html"
-    },
-    {
-        "title": "🌊 Berlin water shortages and recycling, rising crime hotspots, Spandau WWII bomb defused - Berlin News Daily",
-        "date": "September 20, 2025",
-        "year": "2025",
-        "excerpt": "Berlin is ramping up investments in modernized waterworks, wastewater recycling, and climate‑resilient trees to confront worsening water shortages as falling river and lake levels threaten shipping, industry, and drinking water supplies.",
-        "href": "archive/20250920-berlin-water-shortages-and-recycling-rising-crime-hotspots-spandau-wwii-bomb-defused.html"
-    },
-    {
-        "title": "🚨 WWII bomb off Fischerinsel, ASML opens diamond-coated wafer plant, Raid over illegal asbestos dumping - Berlin News Daily",
-        "date": "September 19, 2025",
-        "year": "2025",
-        "excerpt": "Berlin police discovered a suspected World War II bomb in the Spree near Fischerinsel Thursday, establishing a 500-meter exclusion zone and launching overnight evacuations; U2 service is halted between Alexanderplatz and Spittelmarkt, while shelters opened at Rathaus Mitte as thousands of residents and hotel guests were told to leave.",
-        "href": "archive/20250919-wwii-bomb-off-fischerinsel-asml-opens-diamondcoated-wafer-plant-raid-over-illegal-asbestos-dumping.html"
-    },
-    {
-        "title": "🚨 Spandau bomb defusal Sept 19, 6% Berlin-Brandenburg fare hike January, BVG autonomous buses 2035 - Berlin News Daily",
-        "date": "September 18, 2025",
-        "year": "2025",
-        "excerpt": "Workers in Berlin’s Spandau district uncovered a 100-kilogram World War II aerial bomb on Neuendorfer Straße, with disposal scheduled for Friday, Sept. 19.",
-        "href": "archive/20250918-spandau-bomb-defusal-sept-19-6-berlinbrandenburg-fare-hike-january-bvg-autonomous-buses-2035.html"
-    },
-    {
-        "title": "🎵 Drake at Berghain, BER night‑flight curfew dispute, Berlin Marathon road closures - Berlin News Daily",
-        "date": "September 17, 2025",
-        "year": "2025",
-        "excerpt": "Drake reportedly slipped into Berlin’s Berghain on his day off from three shows at the Uber Arena, friend and DJ-producer Gordo wrote on Instagram: “we got in,” saying Drake danced in the crowd without security; Gordo praised the club and noted Berghain’s strict no-photo rule. (Berliner Zeitung, 1 minute read) ",
-        "href": "archive/20250917-drake-at-berghain-ber-nightflight-curfew-dispute-berlin-marathon-road-closures.html"
-    },
-    {
-        "title": "⚖️ Mutombo death: police faulted, Clan brothers convicted but one released, Tegel renovation delayed over funding - Berlin News Daily",
-        "date": "September 16, 2025",
-        "year": "2025",
-        "excerpt": "Berlin’s state anti‑discrimination ombudsperson (LADG) has formally faulted police for the 2022 death of Kupa Illunga Medard Mutombo, who lost consciousness during a Sept. 14 Spandau intervention and died weeks later. The report says officers violated anti‑discrimination rules over his disability and language, used prone restraint that increased asphyxia risk, and lacked medical help; prosecutors are investigating five officers and the ombudsperson demands an apology, at least €45,000 compensation and systemic reform. (rbb24, 2 minute read) ",
-        "href": "archive/20250916-mutombo-death-police-faulted-clan-brothers-convicted-but-one-released-tegel-renovation-delayed-over-funding.html"
-    },
-    {
-        "title": "🏥 Three Berlin knife attacks, 12,000 join pro-Palestinian rally, Berlin's first Currywurst Hawaii - Berlin News Daily",
-        "date": "September 15, 2025",
-        "year": "2025",
-        "excerpt": "Berlin police reported three separate overnight knife attacks in Prenzlauer Berg, Staaken, and Kreuzberg, leaving a 53-year-old and a 59-year-old hospitalized and a 44-year-old critically injured; officers arrested a suspect in Staaken and questioned another in Prenzlauer Berg, while the Kreuzberg attacker remains unknown.",
-        "href": "archive/20250915-three-berlin-knife-attacks-12000-join-propalestinian-rally-berlins-first-currywurst-hawaii.html"
-    },
-    {
-        "title": "🏛️ Huge Gaza protest in Berlin, Humboldt Forum fatal stabbing, Berlin drone grocery pilot - Berlin News Daily",
-        "date": "September 14, 2025",
-        "year": "2025",
-        "excerpt": "Berlin police deployed about 1,000 officers as a large Gaza protest called by Sahra Wagenknecht began at the Brandenburg Gate, with up to 15,000 participants expected.",
-        "href": "archive/20250914-huge-gaza-protest-in-berlin-humboldt-forum-fatal-stabbing-berlin-drone-grocery-pilot.html"
-    },
-    {
-        "title": "🚨 Parked car explodes in Schöneberg, Burnt woman found in playground, ICC opens 49 hours - Berlin News Daily",
-        "date": "September 13, 2025",
-        "year": "2025",
-        "excerpt": "A parked car exploded in Berlin’s Schöneberg overnight, seriously injuring a 22-year-old man; police and prosecutors say he survived because he wasn’t inside or next to it.  ",
-        "href": "archive/20250913-parked-car-explodes-in-schneberg-burnt-woman-found-in-playground-icc-opens-49-hours.html"
-    },
-    {
-        "title": "🏠 Power outage after arson, Gaza rally at Brandenburger-Tor, Three Berlin women arrested for drug smuggling - Berlin News Daily",
-        "date": "September 12, 2025",
-        "year": "2025",
-        "excerpt": "In Berlin’s Treptow-Köpenick, 13,700 customers remained without electricity for a third day, the grid operator said, with full restoration expected today but no precise timing.",
-        "href": "archive/20250912-power-outage-after-arson-gaza-rally-at-brandenburgertor-three-berlin-women-arrested-for-drug-smuggling.html"
-    },
-    {
-        "title": "🚇 Berlin grid arson outage hits 13,700, Munich eases apartment swaps, Ant-hill stalls 2,500 homes - Berlin News Daily",
-        "date": "September 11, 2025",
-        "year": "2025",
-        "excerpt": "An arson attack on two power pylons in Berlin’s Treptow-Köpenick caused a major blackout, with about 13,700 customers still without electricity Wednesday evening; grid operator Stromnetz Berlin expects full restoration during Thursday.",
-        "href": "archive/20250911-berlin-grid-arson-outage-hits-13700-munich-eases-apartment-swaps-anthill-stalls-2500-homes.html"
-    },
-    {
-        "title": "⚖️ Daltons' seven-shot leg attack trial, VeloFlow predicts greens for cyclists, Berlin-Brandenburg lag in education rankings - Berlin News Daily",
-        "date": "September 10, 2025",
-        "year": "2025",
-        "excerpt": "A Berlin court is trying three alleged members of the self-styled “Daltons of Berlin” for the March 30 shooting that left businessman Mustafa M., 36, with shattered leg bones; the accused shooter confessed to firing seven shots, while the others remain silent.",
-        "href": "archive/20250910-daltons-sevenshot-leg-attack-trial-veloflow-predicts-greens-for-cyclists-berlinbrandenburg-lag-in-education-rankings.html"
-    },
-    {
-        "title": "🚨 20-year-old fires at supermarkets over extortion, 10.6M adults illiterate, Raccoon cull record in Berlin - Berlin News Daily",
-        "date": "September 9, 2025",
-        "year": "2025",
-        "excerpt": "A 20-year-old man, identified as Alican C., went on trial in Berlin and confessed to shooting at two Eurogida supermarkets on March 3 following an extortion demand by a group calling itself the Butterflies.",
-        "href": "archive/20250909-20yearold-fires-at-supermarkets-over-extortion-106m-adults-illiterate-raccoon-cull-record-in-berlin.html"
-    },
-    {
-        "title": "⚖️ PKK leadership trial after ticket inspector blinding, Charité reports rising street violence, Serial-killer exhibition - Berlin News Daily",
-        "date": "September 8, 2025",
-        "year": "2025",
-        "excerpt": "Berlin’s Kammergericht opened the first trial in the city against an alleged PKK leadership figure since the group’s designation as a terrorist organization, charging Mehmet K., 50, with membership in a foreign terrorist organization and leadership roles in Germany since 2014.",
-        "href": "archive/20250908-pkk-leadership-trial-after-ticket-inspector-blinding-charit-reports-rising-street-violence-serialkiller-exhibition.html"
-    },
-    {
-        "title": "🚇 S-Bahn weekend closures for software upgrade, 240m Tempelhof skyscrapers proposed, Aurora season returns - Berlin News Daily",
-        "date": "September 7, 2025",
-        "year": "2025",
-        "excerpt": "Berlin’s S-Bahn suspended service on northern sections of lines S1, S2, and S8 for the weekend, with replacement buses running from Saturday 5:00 am to Monday 1:30 am.",
-        "href": "archive/20250907-sbahn-weekend-closures-for-software-upgrade-240m-tempelhof-skyscrapers-proposed-aurora-season-returns.html"
-    },
-    {
-        "title": "🚇 Shots fired at Berlin U8, Berlin tests sirens Sept 11, Major regional rail closures Sept–Dec - Berlin News Daily",
-        "date": "September 6, 2025",
-        "year": "2025",
-        "excerpt": "An unidentified man fired a shot at a departing U8 subway train at Berlin’s Karl-Bonhoeffer-Nervenklinik station in Reinickendorf around 9 p.m. Thursday, police said; the projectile damaged a window but did not pierce it, and the shooter fled.",
-        "href": "archive/20250906-shots-fired-at-berlin-u8-berlin-tests-sirens-sept-11-major-regional-rail-closures-septdec.html"
-    },
-    {
-        "title": "🚗 BMW hits children, Budget cuts threaten HIV prevention, Districts warn parks collapse - Berlin News Daily",
-        "date": "September 5, 2025",
-        "year": "2025",
-        "excerpt": "A BMW driver in Berlin’s Wedding district struck a group of 7- to 8-year-old children at a crossing Thursday, with six receiving medical attention—including three with minor injuries—and their caregiver seriously hurt; the driver was uninjured.",
-        "href": "archive/20250905-bmw-hits-children-budget-cuts-threaten-hiv-prevention-districts-warn-parks-collapse.html"
-    },
-    {
-        "title": "🚇 Neukölln ear bite at U-Bahn, EHEC outbreak infects children, Sailing drowning prompts murder trial - Berlin News Daily",
-        "date": "September 4, 2025",
-        "year": "2025",
-        "excerpt": "Berlin police said a 31-year-old man had part of his right ear bitten off during a dispute over headphones at the Leinestraße U-Bahn station in Neukölln on Tuesday night; the attacker fled empty-handed.",
-        "href": "archive/20250904-neuklln-ear-bite-at-ubahn-ehec-outbreak-infects-children-sailing-drowning-prompts-murder-trial.html"
-    },
-    {
-        "title": "🌡️ 75% jump in Lyme cases, Blind association sues over sidewalk e‑scooters, State offers tenant downsizing - Berlin News Daily",
-        "date": "September 3, 2025",
-        "year": "2025",
-        "excerpt": "Berlin recorded 41 new Lyme disease cases in the week of Aug. 18–24, bringing this year’s total to 862, 75% above the pre-pandemic median for the same period, the city’s health authority said.  ",
-        "href": "archive/20250903-75-jump-in-lyme-cases-blind-association-sues-over-sidewalk-escooters-state-offers-tenant-downsizing.html"
-    },
-    {
-        "title": "🏠 Rents up 30% via index leases, Homelessness spikes, ATM heist accomplice drowns - Berlin News Daily",
-        "date": "September 2, 2025",
-        "year": "2025",
-        "excerpt": "Berlin tenants face rent hikes up to 30% as index leases tie rents to the consumer price index, bypassing the city’s usual 15% three‑year cap, the Berliner Mieterverein warns. Index clauses let landlords raise rents with inflation—pushing the rent index higher and worsening the housing shortage—and the 2019 rent brake only applies at contract start. Tenants should verify calculations and documentation before paying; the Mieterverein urges introducing a cap on index increases. (Berliner Zeitung, 2 minute read) ",
-        "href": "archive/20250902-rents-up-30-via-index-leases-homelessness-spikes-atm-heist-accomplice-drowns.html"
-    },
-    {
-        "title": "🏛️ Officer hits woman at protest, Berlin hospitals refitted as NATO hub, Refugees' trauma largely untreated - Berlin News Daily",
-        "date": "September 1, 2025",
-        "year": "2025",
-        "excerpt": "Berlin police are reviewing footage showing an officer repeatedly striking a woman in the face during a pro-Palestinian protest in central Berlin, after clashes between officers and demonstrators.",
-        "href": "archive/20250901-officer-hits-woman-at-protest-berlin-hospitals-refitted-as-nato-hub-refugees-trauma-largely-untreated.html"
-    },
-    {
-        "title": "🚗 A100 extension snarls traffic, few new teachers fully trained, arson at Green Party office - Berlin News Daily",
-        "date": "August 31, 2025",
-        "year": "2025",
-        "excerpt": "Berlin’s newly opened A100 extension toward Treptow has quickly clogged, with weekend backups and drivers taking about 20 minutes to travel the roughly 3-kilometer stretch; on Friday, officials briefly closed a tunnel to avoid stopped traffic.",
-        "href": "archive/20250831-a100-extension-snarls-traffic-few-new-teachers-fully-trained-arson-at-green-party-office.html"
-    },
-    {
-        "title": "⚖️ Welfare recipient buys €300k drugs retrial, 16% new Berlin teachers qualified, Unemployment up Berlin/Brandenburg - Berlin News Daily",
-        "date": "August 30, 2025",
-        "year": "2025",
-        "excerpt": "A Berlin court held a retrial of a man previously sentenced to three years and six months for large-scale drug purchases revealed via EncroChat, with prosecutors now seeking four years and the defense three.",
-        "href": "archive/20250830-welfare-recipient-buys-300k-drugs-retrial-16-new-berlin-teachers-qualified-unemployment-up-berlinbrandenburg.html"
-    }
-];
+        const searchInput = document.getElementById('searchInput');
+        const filterButtonsContainer = document.getElementById('filterButtons');
+        const resultsGrid = document.getElementById('resultsGrid');
+        const noResults = document.getElementById('noResults');
+        const paginationContainer = document.getElementById('paginationContainer');
 
-        document.addEventListener('DOMContentLoaded', () => {
-            if (typeof newsletters === 'undefined' || newsletters.length === 0) {
-                console.warn('No newsletter data found. The archive will be empty.');
-                return;
-            }
+        const newsletters = [];
+        /* NEWSLETTER_DATA_PLACEHOLDER */
 
-            const grid = document.getElementById('newsletter-grid');
-            const searchInput = document.getElementById('searchInput');
-            const yearFilterContainer = document.getElementById('year-filter-buttons');
-            const noResults = document.getElementById('no-results');
+        // --- STATE ---
+        let currentPage = 1;
+        const itemsPerPage = 12;
 
-            let currentYear = 'all';
-            let currentSearch = '';
-
-            // --- Update Featured Issue ---
-            const latestIssue = newsletters[0]; // Assumes the data is pre-sorted newest first
-            if (latestIssue) {
-                document.getElementById('latest-issue-title').textContent = latestIssue.title;
-                document.getElementById('latest-issue-excerpt').textContent = latestIssue.excerpt;
-                document.getElementById('latest-issue-link').href = latestIssue.href;
-            }
-
-            // --- Generate Year Filters ---
-            const years = ['all', ...Array.from(new Set(newsletters.map(n => n.year)))];
-            yearFilterContainer.innerHTML = years.map(year => 
-                `<button data-year="${year}" class="year-filter ${year === 'all' ? 'active' : ''}">${String(year).charAt(0).toUpperCase() + String(year).slice(1)}</button>`
-            ).join('');
+        function displayNewsletters(filteredNewsletters) {
+            resultsGrid.innerHTML = '';
             
-            const yearFilters = document.querySelectorAll('.year-filter');
+            const startIndex = (currentPage - 1) * itemsPerPage;
+            const endIndex = startIndex + itemsPerPage;
+            const paginatedItems = filteredNewsletters.slice(startIndex, endIndex);
 
-            const renderNewsletters = () => {
-                grid.innerHTML = '';
-                
-                const filteredNewsletters = newsletters.filter(n => {
-                    const matchesYear = currentYear === 'all' || n.year === currentYear;
-                    const lowerCaseSearch = currentSearch.toLowerCase();
-                    const matchesSearch = currentSearch === '' || 
-                                          n.title.toLowerCase().includes(lowerCaseSearch) || 
-                                          n.excerpt.toLowerCase().includes(lowerCaseSearch);
-                    return matchesYear && matchesSearch;
-                });
-                
-                if (filteredNewsletters.length === 0) {
-                    noResults.classList.remove('hidden');
-                    grid.classList.add('hidden');
-                } else {
-                    noResults.classList.add('hidden');
-                    grid.classList.remove('hidden');
+            if (paginatedItems.length === 0) {
+                noResults.classList.remove('hidden');
+            } else {
+                noResults.classList.add('hidden');
+            }
+
+            paginatedItems.forEach(newsletter => {
+                const card = document.createElement('a');
+                card.href = newsletter.href;
+                card.className = 'newsletter-card';
+                card.innerHTML = `
+                    <h3 class="card-title">${newsletter.title}</h3>
+                    <p class="card-date">${newsletter.date}</p>
+                    <p class="card-excerpt">${newsletter.excerpt}</p>
+                `;
+                resultsGrid.appendChild(card);
+            });
+            
+            setupPagination(filteredNewsletters);
+        }
+        
+        function setupPagination(filteredNewsletters) {
+            paginationContainer.innerHTML = '';
+            const pageCount = Math.ceil(filteredNewsletters.length / itemsPerPage);
+
+            if (pageCount <= 1) return;
+
+            for (let i = 1; i <= pageCount; i++) {
+                const btn = document.createElement('button');
+                btn.innerText = i;
+                btn.className = 'page-btn';
+                if (i === currentPage) {
+                    btn.classList.add('active');
                 }
-
-                filteredNewsletters.forEach(n => {
-                    const card = document.createElement('div');
-                    card.className = 'card';
-                    card.innerHTML = `
-                        <p class="date">${n.date}</p>
-                        <h4>${n.title}</h4>
-                        <p>${n.excerpt}</p>
-                        <a href="${n.href}">Read Issue &rarr;</a>
-                    `;
-                    grid.appendChild(card);
+                btn.addEventListener('click', () => {
+                    currentPage = i;
+                    // We only need to re-render the view for the new page, not re-filter
+                    displayNewsletters(filteredNewsletters);
                 });
-            };
-            
-            searchInput.addEventListener('input', (e) => {
-                currentSearch = e.target.value;
-                renderNewsletters();
+                paginationContainer.appendChild(btn);
+            }
+        }
+
+        function generateYearButtons() {
+            const years = [...new Set(newsletters.map(item => item.year))];
+            years.sort().reverse();
+
+            let buttonsHTML = '<button class="year-btn active" data-year="all">All</button>';
+            years.forEach(year => {
+                buttonsHTML += `<button class="year-btn" data-year="${year}">${year}</button>`;
             });
-            
-            yearFilters.forEach(button => {
+
+            filterButtonsContainer.innerHTML = buttonsHTML;
+
+            document.querySelectorAll('.year-btn').forEach(button => {
                 button.addEventListener('click', () => {
-                    yearFilters.forEach(btn => btn.classList.remove('active'));
+                    document.querySelector('.year-btn.active').classList.remove('active');
                     button.classList.add('active');
-                    currentYear = button.dataset.year;
-                    renderNewsletters();
+                    filterAndDisplay();
                 });
             });
+        }
+        
+        function filterAndDisplay() {
+            const searchTerm = searchInput.value.toLowerCase();
+            const activeYearButton = document.querySelector('.year-btn.active');
+            const selectedYear = activeYearButton ? activeYearButton.dataset.year : 'all';
 
-            // Initial render
-            renderNewsletters();
-        });
+            const filtered = newsletters.filter(newsletter => {
+                const matchesSearch = newsletter.title.toLowerCase().includes(searchTerm) || newsletter.excerpt.toLowerCase().includes(searchTerm);
+                const matchesYear = (selectedYear === 'all' || newsletter.year === selectedYear);
+                return matchesSearch && matchesYear;
+            });
+            
+            currentPage = 1; // Reset to page 1 on a new filter
+            displayNewsletters(filtered);
+        }
+
+        // --- INITIALIZATION ---
+        generateYearButtons();
+        searchInput.addEventListener('input', filterAndDisplay);
+        filterAndDisplay(); // Initial display
+
     </script>
 </body>
 </html>
