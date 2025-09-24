@@ -24,12 +24,19 @@ fs.readdir(archiveDir, (err, files) => {
             const dom = new JSDOM(fileContent);
             const doc = dom.window.document;
 
-            // 2. Extract the required data using a consistent structure
-            const title = doc.querySelector('title').textContent;
+            // 2. Extract the required data using a more robust structure
+            const titleTag = doc.querySelector('title');
+            const title = titleTag ? titleTag.textContent : 'Untitled Newsletter';
+            
             const dateMeta = doc.querySelector('meta[name="publish-date"]');
             const date = dateMeta ? new Date(dateMeta.content).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) : 'No Date';
             const year = dateMeta ? new Date(dateMeta.content).getFullYear().toString() : 'N/A';
-            const excerpt = doc.querySelector('p.excerpt') ? doc.querySelector('p.excerpt').textContent : 'No excerpt found.';
+            
+            // --- Improved Excerpt Logic ---
+            // Grabs the first paragraph in the body instead of requiring a specific class.
+            const firstParagraph = doc.querySelector('body p');
+            const excerpt = firstParagraph ? firstParagraph.textContent.trim().substring(0, 150) + '...' : 'No excerpt available.';
+            
             const href = `archive/${file}`; // Link to the actual issue file
 
             return { title, date, year, excerpt, href };
@@ -43,7 +50,10 @@ fs.readdir(archiveDir, (err, files) => {
     // The placeholder in the HTML file looks like: const newsletters = []; /* NEWSLETTER_DATA_PLACEHOLDER */
     const dataString = JSON.stringify(newslettersData, null, 4);
     const replacementString = `const newsletters = ${dataString};`;
-    archiveContent = archiveContent.replace(/const newsletters = \[\]; \/\* NEWSLETTER_DATA_PLACEHOLDER \*\//, replacementString);
+    
+    // --- Fixed Regex ---
+    // This now correctly finds the placeholder across multiple lines.
+    archiveContent = archiveContent.replace(/const newsletters = \[\];\s*\/\* NEWSLETTER_DATA_PLACEHOLDER \*\//, replacementString);
 
     // 5. Write the updated content back to the archive file
     fs.writeFileSync(outputFilePath, archiveContent);
