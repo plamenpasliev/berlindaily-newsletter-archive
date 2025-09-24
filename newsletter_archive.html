@@ -186,10 +186,10 @@
             <a href="https://berlindaily.org/">
                 <img src="/assets/berlin-news-daily-logo.webp" alt="Berlin News in English Logo" class="logo">
             </a>
+            <h1>Newsletter Archive</h1>
         </header>
 
         <main>
-            <h1>Newsletter Archive</h1>
             <!-- Search and Filter Section -->
             <div class="search-container">
                 <input type="text" id="searchInput" class="search-input" placeholder="Search by title or keyword...">
@@ -213,7 +213,7 @@
         </main>
         
         <footer>
-             <script async data-uid="06e015dc85" src="https://berlindaily.kit.com/06e015dc85/index.js"></script>
+            <script async data-uid="06e015dc85" src="https://berlindaily.kit.com/06e015dc85/index.js"></script>
         </footer>
     </div>
 
@@ -224,190 +224,7 @@
         const noResults = document.getElementById('noResults');
         const paginationContainer = document.getElementById('paginationContainer');
 
-        const newsletters = [
-    {
-        "title": "🏠 Berlin sublet rent-cap test, Heating costs jump, AfD overtakes Union - Berlin News Daily",
-        "date": "September 24, 2025",
-        "year": "2025",
-        "excerpt": "High: 16.6°C | Low: 7.2°CChance of Rain: 0%Sunrise: 6:56 AM | Sunset: 7:00 PM...",
-        "href": "archive/20250924-berlin-sublet-rentcap-test-heating-costs-jump-afd-overtakes-union.html"
-    },
-    {
-        "title": "✈️ BER cyber delays, Berlin police overhaul, job losses soar - Berlin News Daily",
-        "date": "September 23, 2025",
-        "year": "2025",
-        "excerpt": "High: 16.1°C | Low: 7.2°CChance of Rain: 0%Sunrise: 6:54 AM | Sunset: 7:02 PM...",
-        "href": "archive/20250923-ber-cyber-delays-berlin-police-overhaul-job-losses-soar.html"
-    },
-    {
-        "title": "🏛️ 48-hour workweek plan, Cannabis Act backlash, Styles sub-3h marathon - Berlin News Daily",
-        "date": "September 22, 2025",
-        "year": "2025",
-        "excerpt": "High: 15.9°C | Low: 12.1°CChance of Rain: 100%Sunrise: 6:52 AM | Sunset: 7:04 PM...",
-        "href": "archive/20250922-48hour-workweek-plan-cannabis-act-backlash-styles-sub3h-marathon.html"
-    },
-    {
-        "title": "🏠 Student rents +74%, Club assaults rise, Airports disrupted by cyberattack - Berlin News Daily",
-        "date": "September 21, 2025",
-        "year": "2025",
-        "excerpt": "High: 26.4°C | Low: 14.7°CChance of Rain: 78%Sunrise: 6:51 AM | Sunset: 7:07 PM...",
-        "href": "archive/20250921-student-rents-74-club-assaults-rise-airports-disrupted-by-cyberattack.html"
-    },
-    {
-        "title": "🌊 Berlin water shortages and recycling, rising crime hotspots, Spandau WWII bomb defused - Berlin News Daily",
-        "date": "September 20, 2025",
-        "year": "2025",
-        "excerpt": "High: 27.9°C | Low: 15.8°CChance of Rain: 0%Sunrise: 6:49 AM | Sunset: 7:09 PM...",
-        "href": "archive/20250920-berlin-water-shortages-and-recycling-rising-crime-hotspots-spandau-wwii-bomb-defused.html"
-    },
-    {
-        "title": "🚨 WWII bomb off Fischerinsel, ASML opens diamond-coated wafer plant, Raid over illegal asbestos dumping - Berlin News Daily",
-        "date": "September 19, 2025",
-        "year": "2025",
-        "excerpt": "High: 23.9°C | Low: 17.6°CChance of Rain: 3%Sunrise: 6:47 AM | Sunset: 7:12 PM...",
-        "href": "archive/20250919-wwii-bomb-off-fischerinsel-asml-opens-diamondcoated-wafer-plant-raid-over-illegal-asbestos-dumping.html"
-    },
-    {
-        "title": "🚨 Spandau bomb defusal Sept 19, 6% Berlin-Brandenburg fare hike January, BVG autonomous buses 2035 - Berlin News Daily",
-        "date": "September 18, 2025",
-        "year": "2025",
-        "excerpt": "High: 19.1°C | Low: 14.6°CChance of Rain: 28%Sunrise: 6:46 AM | Sunset: 7:14 PM...",
-        "href": "archive/20250918-spandau-bomb-defusal-sept-19-6-berlinbrandenburg-fare-hike-january-bvg-autonomous-buses-2035.html"
-    },
-    {
-        "title": "🎵 Drake at Berghain, BER night‑flight curfew dispute, Berlin Marathon road closures - Berlin News Daily",
-        "date": "September 17, 2025",
-        "year": "2025",
-        "excerpt": "High: 18.5°C | Low: 12.7°CChance of Rain: 68%Sunrise: 6:44 AM | Sunset: 7:16 PM...",
-        "href": "archive/20250917-drake-at-berghain-ber-nightflight-curfew-dispute-berlin-marathon-road-closures.html"
-    },
-    {
-        "title": "⚖️ Mutombo death: police faulted, Clan brothers convicted but one released, Tegel renovation delayed over funding - Berlin News Daily",
-        "date": "September 16, 2025",
-        "year": "2025",
-        "excerpt": "High: 18.9°C | Low: 14°CChance of Rain: 38%Sunrise: 6:42 AM | Sunset: 7:19 PM...",
-        "href": "archive/20250916-mutombo-death-police-faulted-clan-brothers-convicted-but-one-released-tegel-renovation-delayed-over-funding.html"
-    },
-    {
-        "title": "🏥 Three Berlin knife attacks, 12,000 join pro-Palestinian rally, Berlin's first Currywurst Hawaii - Berlin News Daily",
-        "date": "September 15, 2025",
-        "year": "2025",
-        "excerpt": "Here’s your quick update on what’s happening around the city on Monday, September 15 - from urgent alerts to stories in the subreddit. Today we went t...",
-        "href": "archive/20250915-three-berlin-knife-attacks-12000-join-propalestinian-rally-berlins-first-currywurst-hawaii.html"
-    },
-    {
-        "title": "🏛️ Huge Gaza protest in Berlin, Humboldt Forum fatal stabbing, Berlin drone grocery pilot - Berlin News Daily",
-        "date": "September 14, 2025",
-        "year": "2025",
-        "excerpt": "Here’s your quick update on what’s happening around the city on Sunday, September 14 - from urgent alerts to stories in the subreddit. Today we went t...",
-        "href": "archive/20250914-huge-gaza-protest-in-berlin-humboldt-forum-fatal-stabbing-berlin-drone-grocery-pilot.html"
-    },
-    {
-        "title": "🚨 Parked car explodes in Schöneberg, Burnt woman found in playground, ICC opens 49 hours - Berlin News Daily",
-        "date": "September 13, 2025",
-        "year": "2025",
-        "excerpt": "Here’s your quick update on what’s happening around the city on Saturday, September 13 - from urgent alerts to stories in the subreddit. Today we went...",
-        "href": "archive/20250913-parked-car-explodes-in-schneberg-burnt-woman-found-in-playground-icc-opens-49-hours.html"
-    },
-    {
-        "title": "🏠 Power outage after arson, Gaza rally at Brandenburger-Tor, Three Berlin women arrested for drug smuggling - Berlin News Daily",
-        "date": "September 12, 2025",
-        "year": "2025",
-        "excerpt": "Here’s your quick update on what’s happening around the city on Friday, September 12 - from urgent alerts to stories in the subreddit. Today we went t...",
-        "href": "archive/20250912-power-outage-after-arson-gaza-rally-at-brandenburgertor-three-berlin-women-arrested-for-drug-smuggling.html"
-    },
-    {
-        "title": "🚇 Berlin grid arson outage hits 13,700, Munich eases apartment swaps, Ant-hill stalls 2,500 homes - Berlin News Daily",
-        "date": "September 11, 2025",
-        "year": "2025",
-        "excerpt": "Here’s your quick update on what’s happening around the city on Thursday, September 11 - from urgent alerts to stories in the subreddit. Today we went...",
-        "href": "archive/20250911-berlin-grid-arson-outage-hits-13700-munich-eases-apartment-swaps-anthill-stalls-2500-homes.html"
-    },
-    {
-        "title": "⚖️ Daltons' seven-shot leg attack trial, VeloFlow predicts greens for cyclists, Berlin-Brandenburg lag in education rankings - Berlin News Daily",
-        "date": "September 10, 2025",
-        "year": "2025",
-        "excerpt": "Here’s your quick update on what’s happening around the city on Wednesday, September 10 - from urgent alerts to stories in the subreddit. Today we wen...",
-        "href": "archive/20250910-daltons-sevenshot-leg-attack-trial-veloflow-predicts-greens-for-cyclists-berlinbrandenburg-lag-in-education-rankings.html"
-    },
-    {
-        "title": "🚨 20-year-old fires at supermarkets over extortion, 10.6M adults illiterate, Raccoon cull record in Berlin - Berlin News Daily",
-        "date": "September 9, 2025",
-        "year": "2025",
-        "excerpt": "Here’s your quick update on what’s happening around the city on Tuesday, September 09 - from urgent alerts to stories in the subreddit. Today we went ...",
-        "href": "archive/20250909-20yearold-fires-at-supermarkets-over-extortion-106m-adults-illiterate-raccoon-cull-record-in-berlin.html"
-    },
-    {
-        "title": "⚖️ PKK leadership trial after ticket inspector blinding, Charité reports rising street violence, Serial-killer exhibition - Berlin News Daily",
-        "date": "September 8, 2025",
-        "year": "2025",
-        "excerpt": "Here’s your quick update on what’s happening around the city on Monday, September 08 - from urgent alerts to stories in the subreddit. Today we went t...",
-        "href": "archive/20250908-pkk-leadership-trial-after-ticket-inspector-blinding-charit-reports-rising-street-violence-serialkiller-exhibition.html"
-    },
-    {
-        "title": "🚇 S-Bahn weekend closures for software upgrade, 240m Tempelhof skyscrapers proposed, Aurora season returns - Berlin News Daily",
-        "date": "September 7, 2025",
-        "year": "2025",
-        "excerpt": "Here’s your quick update on what’s happening around the city on Sunday, September 07 - from urgent alerts to stories in the subreddit. Today we went t...",
-        "href": "archive/20250907-sbahn-weekend-closures-for-software-upgrade-240m-tempelhof-skyscrapers-proposed-aurora-season-returns.html"
-    },
-    {
-        "title": "🚇 Shots fired at Berlin U8, Berlin tests sirens Sept 11, Major regional rail closures Sept–Dec - Berlin News Daily",
-        "date": "September 6, 2025",
-        "year": "2025",
-        "excerpt": "Here’s your quick update on what’s happening around the city on Saturday, September 06 - from urgent alerts to stories in the subreddit. Today we went...",
-        "href": "archive/20250906-shots-fired-at-berlin-u8-berlin-tests-sirens-sept-11-major-regional-rail-closures-septdec.html"
-    },
-    {
-        "title": "🚗 BMW hits children, Budget cuts threaten HIV prevention, Districts warn parks collapse - Berlin News Daily",
-        "date": "September 5, 2025",
-        "year": "2025",
-        "excerpt": "Here’s your quick update on what’s happening around the city on Friday, September 05 - from urgent alerts to stories in the subreddit. Today we went t...",
-        "href": "archive/20250905-bmw-hits-children-budget-cuts-threaten-hiv-prevention-districts-warn-parks-collapse.html"
-    },
-    {
-        "title": "🚇 Neukölln ear bite at U-Bahn, EHEC outbreak infects children, Sailing drowning prompts murder trial - Berlin News Daily",
-        "date": "September 4, 2025",
-        "year": "2025",
-        "excerpt": "Here’s your quick update on what’s happening around the city on Thursday, September 04 - from urgent alerts to stories in the subreddit. Today we went...",
-        "href": "archive/20250904-neuklln-ear-bite-at-ubahn-ehec-outbreak-infects-children-sailing-drowning-prompts-murder-trial.html"
-    },
-    {
-        "title": "🌡️ 75% jump in Lyme cases, Blind association sues over sidewalk e‑scooters, State offers tenant downsizing - Berlin News Daily",
-        "date": "September 3, 2025",
-        "year": "2025",
-        "excerpt": "Here’s your quick update on what’s happening around the city on Wednesday, September 03 - from urgent alerts to stories in the subreddit. Today we wen...",
-        "href": "archive/20250903-75-jump-in-lyme-cases-blind-association-sues-over-sidewalk-escooters-state-offers-tenant-downsizing.html"
-    },
-    {
-        "title": "🏠 Rents up 30% via index leases, Homelessness spikes, ATM heist accomplice drowns - Berlin News Daily",
-        "date": "September 2, 2025",
-        "year": "2025",
-        "excerpt": "Here’s your quick update on what’s happening around the city on Tuesday, September 02 - from urgent alerts to stories in the subreddit. Today we went ...",
-        "href": "archive/20250902-rents-up-30-via-index-leases-homelessness-spikes-atm-heist-accomplice-drowns.html"
-    },
-    {
-        "title": "🏛️ Officer hits woman at protest, Berlin hospitals refitted as NATO hub, Refugees' trauma largely untreated - Berlin News Daily",
-        "date": "September 1, 2025",
-        "year": "2025",
-        "excerpt": "Here’s your quick update on what’s happening around the city on Monday, September 01 - from urgent alerts to stories in the subreddit. Today we went t...",
-        "href": "archive/20250901-officer-hits-woman-at-protest-berlin-hospitals-refitted-as-nato-hub-refugees-trauma-largely-untreated.html"
-    },
-    {
-        "title": "🚗 A100 extension snarls traffic, few new teachers fully trained, arson at Green Party office - Berlin News Daily",
-        "date": "August 31, 2025",
-        "year": "2025",
-        "excerpt": "Here’s your quick update on what’s happening around the city on Sunday, August 31 - from urgent alerts to stories in the subreddit. Today we went thro...",
-        "href": "archive/20250831-a100-extension-snarls-traffic-few-new-teachers-fully-trained-arson-at-green-party-office.html"
-    },
-    {
-        "title": "⚖️ Welfare recipient buys €300k drugs retrial, 16% new Berlin teachers qualified, Unemployment up Berlin/Brandenburg - Berlin News Daily",
-        "date": "August 30, 2025",
-        "year": "2025",
-        "excerpt": "Here’s your quick update on what’s happening around the city on Saturday, August 30 - from urgent alerts to stories in the subreddit. Today we went th...",
-        "href": "archive/20250830-welfare-recipient-buys-300k-drugs-retrial-16-new-berlin-teachers-qualified-unemployment-up-berlinbrandenburg.html"
-    }
-];
+        const newsletters = []; /* NEWSLETTER_DATA_PLACEHOLDER */
 
         // --- STATE ---
         let currentPage = 1;
@@ -420,7 +237,7 @@
             const endIndex = startIndex + itemsPerPage;
             const paginatedItems = filteredNewsletters.slice(startIndex, endIndex);
 
-            if (paginatedItems.length === 0) {
+            if (paginatedItems.length === 0 && newsletters.length > 0) {
                 noResults.classList.remove('hidden');
             } else {
                 noResults.classList.add('hidden');
@@ -500,12 +317,16 @@
         }
 
         // --- INITIALIZATION ---
-        // Prevents flash of "No Newsletters" before data is loaded
-        if(newsletters.length > 0) {
-            generateYearButtons();
-            filterAndDisplay(); // Initial display
-        }
-        searchInput.addEventListener('input', filterAndDisplay);
+        document.addEventListener('DOMContentLoaded', () => {
+             // Prevents flash of "No Newsletters" before data is loaded
+            if(newsletters.length > 0) {
+                generateYearButtons();
+                filterAndDisplay(); // Initial display
+            } else {
+                noResults.classList.remove('hidden');
+            }
+            searchInput.addEventListener('input', filterAndDisplay);
+        });
 
     </script>
 </body>
