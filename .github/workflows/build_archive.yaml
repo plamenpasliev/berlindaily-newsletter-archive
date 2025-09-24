@@ -14,7 +14,11 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest # Use the latest version of Ubuntu as the runner
-
+    
+    # Add this permissions block to allow the action to push code
+    permissions:
+        contents: write
+        
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4 # Action to get your code into the runner
