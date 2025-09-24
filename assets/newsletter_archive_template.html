@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Berlin News Daily - Newsletter Archive</title>
+    <meta name="description" content="The complete archive of the Berlin Daily newsletter.">
+    <!-- This template uses inline CSS to match your existing newsletter style -->
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background: white;
+            color: #111827; /* A dark gray for text */
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1000px; /* Updated max-width */
+            margin: 0 auto;
+            padding: 20px;
+            background: #fff;
+        }
+        .header {
+            text-align: center;
+            padding: 32px 0;
+            border-bottom: 1px solid #e5e7eb;
+            margin-bottom: 32px;
+        }
+        .logo {
+            width: 120px;
+            height: 120px;
+            transition: opacity 0.3s;
+            margin: 0 auto;
+            display: block;
+        }
+        .logo:hover {
+            opacity: 0.8;
+        }
+        h1 {
+            font-size: 2rem;
+            font-weight: bold;
+            color: black;
+            margin-bottom: 32px;
+        }
+        a {
+            color: #2563eb;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .text-center {
+            text-align: center;
+        }
+        /* Archive-specific styles */
+        .search-container {
+            max-width: 600px;
+            margin: 0 auto 32px auto; /* Centered with bottom margin */
+        }
+        .search-input {
+            width: 100%;
+            padding: 12px;
+            font-size: 1rem;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            box-sizing: border-box; /* Important for padding and width */
+        }
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 16px;
+            flex-wrap: wrap;
+        }
+        .year-btn {
+            background-color: #f3f4f6;
+            border: 1px solid #d1d5db;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        .year-btn:hover {
+            background-color: #e5e7eb;
+        }
+        .year-btn.active {
+            background-color: #111827;
+            color: white;
+            border-color: #111827;
+        }
+        
+        /* Updated Responsive Grid */
+        .newsletter-grid {
+            display: grid;
+            grid-template-columns: 1fr; /* 1 column by default */
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+        @media (min-width: 400px) {
+            .newsletter-grid {
+                grid-template-columns: repeat(2, 1fr); /* 2 columns */
+            }
+        }
+        @media (min-width: 700px) {
+            .newsletter-grid {
+                grid-template-columns: repeat(3, 1fr); /* 3 columns */
+            }
+        }
+
+        /* --- Updated Card Styles --- */
+        .card {
+            border: 1px solid #e5e7eb;
+            padding: 1.5rem;
+            border-radius: 12px;
+            transition: box-shadow 0.3s ease;
+            color: inherit; /* remove default link colors */
+            text-decoration: none; /* remove default link underline */
+        }
+        .card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        .card p {
+            margin: 0.5rem 0;
+            color: #374151; /* Match previous excerpt color */
+        }
+        .card .date {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        .card h4 {
+            font-size: 1.25rem;
+            font-weight: 600; /* keep title bold */
+            margin: 0.25rem 0 0.5rem 0;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* Pagination Styles */
+        .pagination-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            margin-top: 32px;
+        }
+        .page-btn {
+            border: 1px solid #d1d5db;
+            background-color: #fff;
+            color: #374151;
+            border-radius: 8px;
+            min-width: 40px;
+            height: 40px;
+            padding: 0 8px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        .page-btn:hover {
+            background-color: #f9fafb;
+        }
+        .page-btn.active {
+            background-color: #111827;
+            color: white;
+            border-color: #111827;
+        }
+        footer {
+            /* Add this to center the form */
+            display: flex;
+            justify-content: center;
+            padding-top: 1.5rem; /* Add some space from the content above */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <a href="https://berlindaily.org/">
+                <img src="/assets/berlin-news-daily-logo.webp" alt="Berlin News in English Logo" class="logo">
+            </a>
+            <h1>Newsletter Archive</h1>
+        </header>
+
+        <main>
+            <!-- Search and Filter Section -->
+            <div class="search-container">
+                <input type="text" id="searchInput" class="search-input" placeholder="Search by title or keyword...">
+                <div id="filterButtons" class="filter-buttons">
+                    <!-- Year buttons will be dynamically generated here -->
+                </div>
+            </div>
+
+            <!-- Results Grid -->
+            <div id="resultsGrid" class="newsletter-grid">
+                <!-- Newsletter cards will be injected here by JavaScript -->
+            </div>
+            
+            <!-- No Results Message -->
+            <p id="noResults" class="text-center hidden" style="color: #6b7280; padding: 40px 0;">No newsletters found matching your criteria.</p>
+
+            <!-- Pagination Controls -->
+            <div id="paginationContainer" class="pagination-container">
+                <!-- Page buttons will be injected here -->
+            </div>
+        </main>
+        
+        <footer>
+            <script async data-uid="06e015dc85" src="https://berlindaily.kit.com/06e015dc85/index.js"></script>
+        </footer>
+    </div>
+
+    <script>
+        const searchInput = document.getElementById('searchInput');
+        const filterButtonsContainer = document.getElementById('filterButtons');
+        const resultsGrid = document.getElementById('resultsGrid');
+        const noResults = document.getElementById('noResults');
+        const paginationContainer = document.getElementById('paginationContainer');
+
+        const newsletters = []; /* NEWSLETTER_DATA_PLACEHOLDER */
+
+        // --- STATE ---
+        let currentPage = 1;
+        const itemsPerPage = 12;
+
+        function displayNewsletters(filteredNewsletters) {
+            resultsGrid.innerHTML = '';
+            
+            const startIndex = (currentPage - 1) * itemsPerPage;
+            const endIndex = startIndex + itemsPerPage;
+            const paginatedItems = filteredNewsletters.slice(startIndex, endIndex);
+
+            if (paginatedItems.length === 0 && newsletters.length > 0) {
+                noResults.classList.remove('hidden');
+            } else {
+                noResults.classList.add('hidden');
+            }
+
+            paginatedItems.forEach(newsletter => {
+                const card = document.createElement('a');
+                card.href = newsletter.href;
+                card.className = 'card'; // Updated class name
+                // Updated HTML structure to match new CSS
+                card.innerHTML = `
+                    <p class="date">${newsletter.date}</p>
+                    <h4>${newsletter.title}</h4>
+                    <p>${newsletter.excerpt}</p>
+                `;
+                resultsGrid.appendChild(card);
+            });
+            
+            setupPagination(filteredNewsletters);
+        }
+        
+        function setupPagination(filteredNewsletters) {
+            paginationContainer.innerHTML = '';
+            const pageCount = Math.ceil(filteredNewsletters.length / itemsPerPage);
+
+            if (pageCount <= 1) return;
+
+            for (let i = 1; i <= pageCount; i++) {
+                const btn = document.createElement('button');
+                btn.innerText = i;
+                btn.className = 'page-btn';
+                if (i === currentPage) {
+                    btn.classList.add('active');
+                }
+                btn.addEventListener('click', () => {
+                    currentPage = i;
+                    // We only need to re-render the view for the new page, not re-filter
+                    displayNewsletters(filteredNewsletters);
+                });
+                paginationContainer.appendChild(btn);
+            }
+        }
+
+        function generateYearButtons() {
+            const years = [...new Set(newsletters.map(item => item.year))];
+            years.sort().reverse();
+
+            let buttonsHTML = '<button class="year-btn active" data-year="all">All</button>';
+            years.forEach(year => {
+                buttonsHTML += `<button class="year-btn" data-year="${year}">${year}</button>`;
+            });
+
+            filterButtonsContainer.innerHTML = buttonsHTML;
+
+            document.querySelectorAll('.year-btn').forEach(button => {
+                button.addEventListener('click', () => {
+                    document.querySelector('.year-btn.active').classList.remove('active');
+                    button.classList.add('active');
+                    filterAndDisplay();
+                });
+            });
+        }
+        
+        function filterAndDisplay() {
+            const searchTerm = searchInput.value.toLowerCase();
+            const activeYearButton = document.querySelector('.year-btn.active');
+            const selectedYear = activeYearButton ? activeYearButton.dataset.year : 'all';
+
+            const filtered = newsletters.filter(newsletter => {
+                const matchesSearch = newsletter.title.toLowerCase().includes(searchTerm) || newsletter.excerpt.toLowerCase().includes(searchTerm);
+                const matchesYear = (selectedYear === 'all' || newsletter.year === selectedYear);
+                return matchesSearch && matchesYear;
+            });
+            
+            currentPage = 1; // Reset to page 1 on a new filter
+            displayNewsletters(filtered);
+        }
+
+        // --- INITIALIZATION ---
+        document.addEventListener('DOMContentLoaded', () => {
+             // Prevents flash of "No Newsletters" before data is loaded
+            if(newsletters.length > 0) {
+                generateYearButtons();
+                filterAndDisplay(); // Initial display
+            } else {
+                noResults.classList.remove('hidden');
+            }
+            searchInput.addEventListener('input', filterAndDisplay);
+        });
+
+    </script>
+</body>
+</html>

@@ -6,10 +6,17 @@ const path = require('path');
 const { JSDOM } = require('jsdom');
 
 const archiveDir = path.join(__dirname, '../archive');
-const archiveTemplatePath = path.join(__dirname, '../newsletter_archive.html');
-const outputFilePath = path.join(__dirname, '../newsletter_archive.html');
+// --- UPDATED PATHS ---
+const archiveTemplatePath = path.join(__dirname, '../assets/newsletter_archive_template.html'); // READ from the template
+const outputFilePath = path.join(__dirname, '../newsletter_archive.html'); // WRITE to the final file
 
-// 1. Read all files from the 'archive' directory
+// 1. Check if template file exists
+if (!fs.existsSync(archiveTemplatePath)) {
+    console.error(`Template file not found at: ${archiveTemplatePath}`);
+    process.exit(1);
+}
+
+// 2. Read all files from the 'archive' directory
 fs.readdir(archiveDir, (err, files) => {
     if (err) {
         console.error('Could not list the directory.', err);
@@ -24,7 +31,7 @@ fs.readdir(archiveDir, (err, files) => {
             const dom = new JSDOM(fileContent);
             const doc = dom.window.document;
 
-            // 2. Extract the required data using a more robust structure
+            // Extract the required data using a more robust structure
             const titleTag = doc.querySelector('title');
             const title = titleTag ? titleTag.textContent : 'Untitled Newsletter';
             
@@ -32,7 +39,6 @@ fs.readdir(archiveDir, (err, files) => {
             const date = dateMeta ? new Date(dateMeta.content).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) : 'No Date';
             const year = dateMeta ? new Date(dateMeta.content).getFullYear().toString() : 'N/A';
             
-            // --- Updated Excerpt Logic ---
             // Grabs only the paragraph with class="excerpt".
             const excerptElement = doc.querySelector('p.excerpt');
             const excerpt = excerptElement ? excerptElement.textContent.trim() : 'No excerpt available.';
@@ -47,11 +53,9 @@ fs.readdir(archiveDir, (err, files) => {
     let archiveContent = fs.readFileSync(archiveTemplatePath, 'utf-8');
 
     // 4. Inject the data into the template
-    // The placeholder in the HTML file looks like: const newsletters = []; /* NEWSLETTER_DATA_PLACEHOLDER */
     const dataString = JSON.stringify(newslettersData, null, 4);
     const replacementString = `const newsletters = ${dataString};`;
     
-    // --- Fixed Regex ---
     // This now correctly finds the placeholder across multiple lines.
     archiveContent = archiveContent.replace(/const newsletters = \[\];\s*\/\* NEWSLETTER_DATA_PLACEHOLDER \*\//, replacementString);
 
