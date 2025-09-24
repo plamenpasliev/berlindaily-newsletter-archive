@@ -115,33 +115,30 @@
             }
         }
 
-        .newsletter-card {
+        /* --- Updated Card Styles --- */
+        .card {
             border: 1px solid #e5e7eb;
+            padding: 1.5rem;
             border-radius: 12px;
-            padding: 20px;
-            transition: box-shadow 0.2s, transform 0.2s;
-            background-color: #fff;
-            display: flex;
-            flex-direction: column;
+            transition: box-shadow 0.3s ease;
+            color: inherit; /* remove default link colors */
+            text-decoration: none; /* remove default link underline */
         }
-        .newsletter-card:hover {
+        .card:hover {
             box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-            transform: translateY(-2px);
         }
-        .card-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin: 0 0 8px 0;
+        .card p {
+            margin: 0.5rem 0;
+            color: #374151; /* Match previous excerpt color */
         }
-        .card-date {
+        .card .date {
+            color: #666;
             font-size: 0.9rem;
-            color: #6b7280;
-            margin-bottom: 12px;
         }
-        .card-excerpt {
-            font-size: 1rem;
-            color: #374151;
-            flex-grow: 1;
+        .card h4 {
+            font-size: 1.25rem;
+            font-weight: 600; /* keep title bold */
+            margin: 0.25rem 0 0.5rem 0;
         }
 
         .hidden {
@@ -179,6 +176,7 @@
             /* Add this to center the form */
             display: flex;
             justify-content: center;
+            padding-top: 1.5rem; /* Add some space from the content above */
         }
     </style>
 </head>
@@ -214,9 +212,7 @@
             </div>
         </main>
         
-        <hr>
-        
-        <footer class="text-center">
+        <footer>
              <script async data-uid="7cfab03e55" src="https://berlindaily.kit.com/7cfab03e55/index.js"></script>
         </footer>
     </div>
@@ -433,11 +429,12 @@
             paginatedItems.forEach(newsletter => {
                 const card = document.createElement('a');
                 card.href = newsletter.href;
-                card.className = 'newsletter-card';
+                card.className = 'card'; // Updated class name
+                // Updated HTML structure to match new CSS
                 card.innerHTML = `
-                    <h3 class="card-title">${newsletter.title}</h3>
-                    <p class="card-date">${newsletter.date}</p>
-                    <p class="card-excerpt">${newsletter.excerpt}</p>
+                    <p class="date">${newsletter.date}</p>
+                    <h4>${newsletter.title}</h4>
+                    <p>${newsletter.excerpt}</p>
                 `;
                 resultsGrid.appendChild(card);
             });
@@ -503,9 +500,12 @@
         }
 
         // --- INITIALIZATION ---
-        generateYearButtons();
+        // Prevents flash of "No Newsletters" before data is loaded
+        if(newsletters.length > 0) {
+            generateYearButtons();
+            filterAndDisplay(); // Initial display
+        }
         searchInput.addEventListener('input', filterAndDisplay);
-        filterAndDisplay(); // Initial display
 
     </script>
 </body>

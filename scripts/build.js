@@ -32,10 +32,10 @@ fs.readdir(archiveDir, (err, files) => {
             const date = dateMeta ? new Date(dateMeta.content).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) : 'No Date';
             const year = dateMeta ? new Date(dateMeta.content).getFullYear().toString() : 'N/A';
             
-            // --- Improved Excerpt Logic ---
-            // Grabs the first paragraph in the body instead of requiring a specific class.
-            const firstParagraph = doc.querySelector('body p');
-            const excerpt = firstParagraph ? firstParagraph.textContent.trim().substring(0, 150) + '...' : 'No excerpt available.';
+            // --- Updated Excerpt Logic ---
+            // Grabs only the paragraph with class="excerpt".
+            const excerptElement = doc.querySelector('p.excerpt');
+            const excerpt = excerptElement ? excerptElement.textContent.trim() : 'No excerpt available.';
             
             const href = `archive/${file}`; // Link to the actual issue file
 
