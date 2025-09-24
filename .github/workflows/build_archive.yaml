@@ -10,6 +10,8 @@ on:
       - main # This triggers the workflow on pushes to the 'main' branch
     paths:
       - 'archive/**' # Onl.y run if a file in the 'archive' folder changes
+      
+  workflow_dispatch:
 
 jobs:
   build:
@@ -18,7 +20,7 @@ jobs:
     # Add this permissions block to allow the action to push code
     permissions:
         contents: write
-        
+
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4 # Action to get your code into the runner
