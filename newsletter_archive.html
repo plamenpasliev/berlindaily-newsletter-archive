@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Berlin Daily - Newsletter Archive</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background: white;
+            color: #333;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 650px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #fff;
+        }
+        .header {
+            text-align: center;
+            padding: 32px 0;
+        }
+        .logo {
+            width: 120px;
+            height: 120px;
+            transition: opacity 0.3s;
+            margin: 0 auto 32px auto;
+            display: block;
+        }
+        .logo:hover {
+            opacity: 0.8;
+        }
+        h1 {
+            font-size: 2rem;
+            font-weight: bold;
+            color: black;
+            margin-bottom: 32px;
+        }
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 1.5rem 0 1rem 0;
+        }
+        h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin: 1.25rem 0 0.75rem 0;
+        }
+        p {
+            margin: 1rem 0;
+        }
+        a {
+            color: #2563eb;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        hr {
+            border: none;
+            border-top: 1px solid #e5e7eb;
+            margin: 1.5rem 0;
+        }
+        .text-center {
+            text-align: center;
+        }
+
+        /* Styles for Archive Specific Elements */
+        .featured-issue {
+            padding: 2rem;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            margin-bottom: 3rem;
+        }
+        .featured-issue h2 {
+            font-size: 2rem;
+            margin-top: 0;
+        }
+        .featured-issue a.read-now {
+            display: inline-block;
+            background-color: #111;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            margin-top: 1rem;
+        }
+        .search-input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+        .filter-buttons button {
+            padding: 8px 16px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background: white;
+            cursor: pointer;
+            margin-right: 8px;
+            font-size: 0.9rem;
+        }
+        .filter-buttons button.active {
+            background: #111;
+            color: white;
+            border-color: #111;
+        }
+        .newsletter-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        .card {
+            border: 1px solid #e5e7eb;
+            padding: 1.5rem;
+            border-radius: 12px;
+            transition: box-shadow 0.3s ease;
+        }
+        .card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        .card p {
+            margin: 0.5rem 0;
+        }
+        .card .date {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        .card h4 {
+            font-size: 1.25rem;
+            margin: 0.25rem 0 0.5rem 0;
+        }
+        
+        @media (min-width: 768px) {
+            .logo {
+                width: 150px;
+                height: 150px;
+            }
+            h1 {
+                font-size: 2.5rem;
+            }
+            .newsletter-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <a href="https://berlindaily.org/">
+                <img src="/assets/berlin-news-daily-logo.webp" alt="Berlin News in English Logo" class="logo">
+            </a>
+            <h1>Newsletter Archive</h1>
+        </header>
+
+        <main>
+            <!-- Featured Latest Issue -->
+            <section class="featured-issue">
+                <p style="color: #666; font-weight: bold; font-size: 0.9rem;">LATEST ISSUE</p>
+                <h2 id="latest-issue-title">Welcome to the Archive</h2>
+                <p id="latest-issue-excerpt">Our latest issue will be displayed here. Browse past newsletters below.</p>
+                <a href="#" id="latest-issue-link" class="read-now">Read Now &rarr;</a>
+            </section>
+
+            <!-- Search and Filter Section -->
+            <section>
+                <h3>Explore the Archive</h3>
+                <input type="text" id="searchInput" placeholder="Search by keyword..." class="search-input">
+                <div id="year-filter-buttons" class="filter-buttons">
+                    <!-- Year filter buttons will be generated by JS -->
+                </div>
+            </section>
+
+            <!-- Newsletter Grid -->
+            <section id="newsletter-grid" class="newsletter-grid">
+                <!-- Newsletter items will be injected here by JS -->
+            </section>
+            
+            <div id="no-results" class="hidden text-center" style="padding: 3rem 0;">
+                <h3>No Newsletters Found</h3>
+                <p>Try adjusting your search or filter criteria.</p>
+            </div>
+        </main>
+        
+        <hr>
+
+        <footer class="text-center">
+            <script async data-uid="7cfab03e55" src="https://berlindaily.kit.com/7cfab03e55/index.js"></script>
+        </footer>
+    </div>
+
+    <script>
+        // IMPORTANT: The build script will replace the next line with the actual newsletter data.
+        const newsletters = []; /* NEWSLETTER_DATA_PLACEHOLDER */
+
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof newsletters === 'undefined' || newsletters.length === 0) {
+                console.warn('No newsletter data found. The archive will be empty.');
+                return;
+            }
+
+            const grid = document.getElementById('newsletter-grid');
+            const searchInput = document.getElementById('searchInput');
+            const yearFilterContainer = document.getElementById('year-filter-buttons');
+            const noResults = document.getElementById('no-results');
+
+            let currentYear = 'all';
+            let currentSearch = '';
+
+            // --- Update Featured Issue ---
+            const latestIssue = newsletters[0]; // Assumes the data is pre-sorted newest first
+            if (latestIssue) {
+                document.getElementById('latest-issue-title').textContent = latestIssue.title;
+                document.getElementById('latest-issue-excerpt').textContent = latestIssue.excerpt;
+                document.getElementById('latest-issue-link').href = latestIssue.href;
+            }
+
+            // --- Generate Year Filters ---
+            const years = ['all', ...Array.from(new Set(newsletters.map(n => n.year)))];
+            yearFilterContainer.innerHTML = years.map(year => 
+                `<button data-year="${year}" class="year-filter ${year === 'all' ? 'active' : ''}">${String(year).charAt(0).toUpperCase() + String(year).slice(1)}</button>`
+            ).join('');
+            
+            const yearFilters = document.querySelectorAll('.year-filter');
+
+            const renderNewsletters = () => {
+                grid.innerHTML = '';
+                
+                const filteredNewsletters = newsletters.filter(n => {
+                    const matchesYear = currentYear === 'all' || n.year === currentYear;
+                    const lowerCaseSearch = currentSearch.toLowerCase();
+                    const matchesSearch = currentSearch === '' || 
+                                          n.title.toLowerCase().includes(lowerCaseSearch) || 
+                                          n.excerpt.toLowerCase().includes(lowerCaseSearch);
+                    return matchesYear && matchesSearch;
+                });
+                
+                if (filteredNewsletters.length === 0) {
+                    noResults.classList.remove('hidden');
+                    grid.classList.add('hidden');
+                } else {
+                    noResults.classList.add('hidden');
+                    grid.classList.remove('hidden');
+                }
+
+                filteredNewsletters.forEach(n => {
+                    const card = document.createElement('div');
+                    card.className = 'card';
+                    card.innerHTML = `
+                        <p class="date">${n.date}</p>
+                        <h4>${n.title}</h4>
+                        <p>${n.excerpt}</p>
+                        <a href="${n.href}">Read Issue &rarr;</a>
+                    `;
+                    grid.appendChild(card);
+                });
+            };
+            
+            searchInput.addEventListener('input', (e) => {
+                currentSearch = e.target.value;
+                renderNewsletters();
+            });
+            
+            yearFilters.forEach(button => {
+                button.addEventListener('click', () => {
+                    yearFilters.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    currentYear = button.dataset.year;
+                    renderNewsletters();
+                });
+            });
+
+            // Initial render
+            renderNewsletters();
+        });
+    </script>
+</body>
+</html>
