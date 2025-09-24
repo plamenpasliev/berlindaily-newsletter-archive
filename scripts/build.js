@@ -41,7 +41,12 @@ fs.readdir(archiveDir, (err, files) => {
             
             // Grabs only the paragraph with class="excerpt".
             const excerptElement = doc.querySelector('p.excerpt');
-            const excerpt = excerptElement ? excerptElement.textContent.trim() : 'No excerpt available.';
+            let excerpt = excerptElement ? excerptElement.textContent.trim() : 'No excerpt available.';
+            
+            // --- ADDED: Character limit for excerpt ---
+            if (excerpt.length > 150) {
+                excerpt = excerpt.substring(0, 150) + '...';
+            }
             
             const href = `archive/${file}`; // Link to the actual issue file
 
