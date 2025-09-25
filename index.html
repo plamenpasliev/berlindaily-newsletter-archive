@@ -1,27 +1,11 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🏠 Berlin sublet rent-cap test, Heating costs jump, AfD overtakes Union - Berlin News Daily</title>
-    <meta name="description" content="Stay informed with curated Berlin news and events in English — perfect for expats and newcomers. We go through 100+ articles, posts and events each day so you don't have to.">
-    <meta name="author" content="Plamen Pasliev" />
-    <meta name="publish-date" content="2025-09-24">
-    <link rel="canonical" href="https://berlindaily.org/" />
-    
-    <!-- Cache control for static assets -->
-    <meta http-equiv="Cache-Control" content="public, max-age=31536000" />
-    
-    <!-- Preload critical WebP images for LCP optimization -->
-    <link rel="preload" as="image" href="/assets/berlin-news-daily-logo.webp" fetchpriority="high" />
-
-    <meta property="og:title" content="🏠 Berlin sublet rent-cap test, Heating costs jump, AfD overtakes Union - Berlin News Daily" />
-    <meta property="og:description" content="Stay informed with curated Berlin news and events in English — perfect for expats and newcomers. We go through 100+ articles, posts and events each day so you don't have to." />
-    <meta property="og:type" content="article" />
-    <meta property="og:url" content="https://newsletter.berlindaily.org/archive/20250924-berlin-sublet-rentcap-test-heating-costs-jump-afd-overtakes-union.html" />
-    <meta property="og:image" content="https://storage.googleapis.com/gpt-engineer-file-uploads/4EHtkGxfgqNmjMCrTPEpIxYaKjf2/social-images/social-1758459261289-berlindaily-logo.png">
-
+    <title>Berlin News Daily - Newsletter Archive</title>
+    <meta name="description" content="The complete archive of the Berlin Daily newsletter.">
+    <!-- This template uses inline CSS to match your existing newsletter style -->
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -29,23 +13,26 @@
             margin: 0;
             padding: 0;
             background: white;
+            color: #111827; /* A dark gray for text */
             min-height: 100vh;
         }
         .container {
-            max-width: 650px;
+            max-width: 1000px; /* Updated max-width */
             margin: 0 auto;
             padding: 20px;
             background: #fff;
         }
         .header {
-            text-center;
+            text-align: center;
             padding: 32px 0;
+            border-bottom: 1px solid #e5e7eb;
+            margin-bottom: 32px;
         }
         .logo {
             width: 120px;
             height: 120px;
             transition: opacity 0.3s;
-            margin: 0 auto 32px auto;
+            margin: 0 auto;
             display: block;
         }
         .logo:hover {
@@ -57,19 +44,6 @@
             color: black;
             margin-bottom: 32px;
         }
-        h2 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin: 1.5rem 0 1rem 0;
-        }
-        h3 {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin: 1.25rem 0 0.75rem 0;
-        }
-        p {
-            margin: 1rem 0;
-        }
         a {
             color: #2563eb;
             text-decoration: none;
@@ -77,107 +51,511 @@
         a:hover {
             text-decoration: underline;
         }
-        hr {
-            border: none;
-            border-top: 1px solid #e5e7eb;
-            margin: 1.5rem 0;
-        }
-        ul {
-            margin: 1rem 0;
-            padding-left: 1.5rem;
-        }
-        li {
-            margin: 0.5rem 0;
-        }
         .text-center {
             text-align: center;
         }
-        @media (min-width: 768px) {
-            .logo {
-                width: 150px;
-                height: 150px;
+        /* Archive-specific styles */
+        .search-container {
+            max-width: 600px;
+            margin: 0 auto 32px auto; /* Centered with bottom margin */
+        }
+        .search-input {
+            width: 100%;
+            padding: 12px;
+            font-size: 1rem;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            box-sizing: border-box; /* Important for padding and width */
+        }
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 16px;
+            flex-wrap: wrap;
+        }
+        .filter-btn {
+            background-color: #f3f4f6;
+            border: 1px solid #d1d5db;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        .filter-btn:hover {
+            background-color: #e5e7eb;
+        }
+        .filter-btn.active {
+            background-color: #111827;
+            color: white;
+            border-color: #111827;
+        }
+        
+        /* --- UPDATED: Responsive Grid --- */
+        .newsletter-grid {
+            display: grid;
+            grid-template-columns: 1fr; /* 1 column < 500px */
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+        @media (min-width: 500px) {
+            .newsletter-grid {
+                grid-template-columns: repeat(2, 1fr); /* 2 columns */
             }
-            h1 {
-                font-size: 2.5rem;
+        }
+        @media (min-width: 900px) {
+            .newsletter-grid {
+                grid-template-columns: repeat(3, 1fr); /* 3 columns */
             }
+        }
+
+        /* --- UPDATED: Card Styles --- */
+        .card {
+            border: 1px solid #e5e7eb;
+            padding: 1.5rem;
+            border-radius: 12px;
+            transition: box-shadow 0.3s ease;
+            color: inherit;
+            text-decoration: none;
+            display: flex; 
+            flex-direction: column; 
+            justify-content: space-between; 
+            height: auto; /* Variable height on mobile by default */
+        }
+        .card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        .card p {
+            margin: 0.5rem 0;
+            color: #374151;
+        }
+        .card .date {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        .card h4 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin: 0.25rem 0 0.5rem 0;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 3;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .card .card-excerpt {
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 8; /* Updated line clamp */
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        /* Desktop card structure */
+        @media (min-width: 500px) {
+            .card {
+                height: 420px; /* Fixed height for alignment */
+            }
+            .card h4 {
+                min-height: 95px; /* Ensures consistent title block height */
+            }
+            .card .card-excerpt {
+                min-height: 205px; /* Ensures consistent excerpt block height */
+            }
+        }
+
+        .card-content {
+            flex-grow: 1; 
+        }
+        .read-more-btn {
+            background-color: #111827;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 500;
+            text-decoration: none;
+            display: inline-block;
+            align-self: flex-start;
+            margin-top: 1rem;
+            transition: background-color 0.2s;
+        }
+        .read-more-btn:hover {
+            background-color: #374151;
+            text-decoration: none;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* Pagination Styles */
+        .pagination-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            margin-top: 32px;
+        }
+        .page-btn {
+            border: 1px solid #d1d5db;
+            background-color: #fff;
+            color: #374151;
+            border-radius: 8px;
+            min-width: 40px;
+            height: 40px;
+            padding: 0 8px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        .page-btn:hover {
+            background-color: #f9fafb;
+        }
+        .page-btn.active {
+            background-color: #111827;
+            color: white;
+            border-color: #111827;
+        }
+        footer {
+            display: flex;
+            justify-content: center;
+            padding-top: 1.5rem;
         }
     </style>
 </head>
 <body>
-    <div class="container">   
-     <div class="text-center">
-<a href="https://berlindaily.org/">
+    <div class="container">
+        <header class="header">
+            <a href="https://berlindaily.org/">
                 <img src="/assets/berlin-news-daily-logo.webp" alt="Berlin News in English Logo" class="logo">
             </a>
-</div>     
+            <h1>Newsletter Archive</h1>
+        </header>
 
-     <div align="center">
+        <main>
+            <!-- Search and Filter Section -->
+            <div class="search-container">
+                <input type="text" id="searchInput" class="search-input" placeholder="Search by title or keyword...">
+                <div id="filterButtons" class="filter-buttons">
+                    <!-- Filter buttons will be dynamically generated here -->
+                </div>
+            </div>
 
-<h1 id="☀️-guten-morgen-berlin">☀️ Guten Morgen, Berlin!</h1>
-<p>High: 16.6°C | Low: 7.2°C<br>Chance of Rain: 0%<br>Sunrise: 6:56 AM | Sunset: 7:00 PM</p>
-</div>
+            <!-- Results Grid -->
+            <div id="resultsGrid" class="newsletter-grid">
+                <!-- Newsletter cards will be injected here by JavaScript -->
+            </div>
+            
+            <!-- No Results Message -->
+            <p id="noResults" class="text-center hidden" style="color: #6b7280; padding: 40px 0;">No newsletters found matching your criteria.</p>
 
-<p>Here’s your quick update on what’s happening around the city on <strong>Wednesday, September 24</strong> - from urgent alerts to stories in the subreddit. Today we went through 100+ articles, posts and events so you don&#39;t have to. </p>
-<p>💌 Know someone who’d love this? <a href="mailto:?subject=Best%20English%20Newsletter%20in%20Berlin&amp;body=Hey%2C%0A%0AI%E2%80%99ve%20been%20reading%20Berlin%20News%20Daily%2C%20and%20definitely%20think%20you%E2%80%99d%20enjoy%20it%20as%20well.%20It%20has%20all%20of%20the%20day%E2%80%99s%20top%20news%20and%20events%20%E2%80%94%20in%20a%20concise%2C%20unbiased%20(and%20free)%205-minute%20morning%20email.%20I%20learn%20something%20new%20every%20time%20I%20open%20it.%0A%0ACheck%20out%20the%20%231%20Berlin%20Daily%20Newsletter%20here%3A%0A%0Ahttps%3A%2F%2Fberlindaily.org%2F">Share the email and help us grow!</a></p>
-<p>Got feedback? Write us at <a href="mailto:news@berlindaily.org">news@berlindaily.org</a>. Let&#39;s dive in.</p>
-<hr>
-<h2 id="🇩🇪-its-the-wild-west-whats-going-on-here">🇩🇪 &quot;It&#39;s the Wild West what&#39;s going on here&quot;</h2>
-<p> Germany’s Federal Court of Justice is hearing a Berlin case on whether the rent cap applies to sublets, after a tenant sublet a €460 apartment for €962 without permission; the landlord seeks termination.</p>
-<p>Subletting has surged among young Berliners amid tight housing supply, with many rooms priced above legal limits. Lower protections and disputed rules have fueled conflicts, though Berlin courts have held main tenants must respect the cap and that sublets are not a separate market.</p>
-<p>A ruling could set a nationwide precedent on applying the cap to sublets, shape eviction decisions, require disclosure of sublease terms, and enable some tenants to seek refunds for overcharges. <em>(<a href="https://www.rbb24.de/politik/beitrag/2025/09/untermiete-ueberteuert-interview-mieterverein-berlin-bartels.html">rbb24</a>, 7 minute read)</em></p>
-<hr>
-<h2 id="🇩🇪-heating-costs-to-rise-significantly-again-in-2025">🇩🇪 Heating costs to rise significantly again in 2025</h2>
-<p> Heating costs in Germany will rise across all energy sources this year, co2online’s Heizspiegel reports, with a 70 m² gas-heated apartment up 15% to €1,180; district heating +2% to €1,245; oil +3% to €1,055; pellets +20% to €740; heat pumps +5% to €715.</p>
-<p>The increases reflect higher energy prices and a cold start to the year; last year costs declined. Co2online expects further rises, with gas and oil costs tripling over 20 years, district heating and pellets roughly doubling, while heat pumps see the slowest growth thanks to policy support and renewable power.</p>
-<p>Households should expect higher bills into 2026; co2online says most can cut costs by about €400 a year through thermostat and heating-curve adjustments, proper ventilation, lower hot-water use, and upgrades such as hydraulic balancing, pump replacements, and pipe insulation. <em>(<a href="https://www.tagesschau.de/wirtschaft/heizkosten-heizspiegel-prognose-100.html">tagesschau.de</a>, 2 minute read)</em></p>
-<hr>
-<h2 id="🇩🇪--merzs-poll-ratings-in-free-fall-afd-overtakes-cducsu">🇩🇪  Merz&#39;s poll ratings in free fall: AfD overtakes CDU/CSU</h2>
-<p> The AfD leads at 26% in a new INSA poll, overtaking the Union (CDU/CSU) at 24.5%; AfD leader Alice Weidel climbs to 10th in the politician ranking (37.6), while CDU leader Friedrich Merz drops to 18th (35.5).</p>
-<p>The results reflect voter discontent, with migration, energy costs, and security driving AfD support. Union and SPD together poll at 39%, below past majorities; Greens 11%, Left 11.5%, BSW 4%, FDP 3.5% would miss the 5% threshold.</p>
-<p>The findings are likely to sharpen strategy debates ahead of upcoming eastern state elections, with attention on whether AfD consolidates its lead and whether the Union adjusts course. <em>(<a href="https://www.berliner-zeitung.de//news/umfragewerte-von-merz-im-freien-fall-afd-zieht-an-union-vorbei-li.2359036">Berliner Zeitung</a>, 2 minute read)</em></p>
-<hr>
-<h2 id="⚡-quick-hits">⚡ Quick Hits</h2>
-<ul>
-<li><p>🇩🇪 Bartender bites out the cheek of snack bar owner (44) <em>(<a href="https://www.bz-berlin.de/polizei/zechpreller-beisst-imbissbesitzer-wange">B.Z. – Die Stimme Berlins</a>, 2 minute read)</em></p>
-</li>
-<li><p>🇬🇧 Berlin to get its first public bicycle parking garage <em>(<a href="https://www.berlin.de/en/news/9916360-5559700-berlin-to-get-its-first-public-bicycle-p.en.html">Berlin.de</a>, 1 minute read)</em></p>
-</li>
-<li><p>🇩🇪 Berlin police register significantly more incorrectly parked e-scooters <em>(<a href="https://www.rbb24.de/panorama/beitrag/2025/09/berlin-e-scooter-fusswege-radwege-verstoesse-polizei-zahlen.html">rbb24</a>, 2 minute read)</em></p>
-</li>
-<li><p>🇩🇪 Berlin - Bitterfeld railroad line closed for months from Wednesday due to construction work <em>(<a href="https://www.rbb24.de/panorama/beitrag/2025/09/berlin-bitterfeld-db-bahn-streckensperrung.html">rbb24</a>, 2 minute read)</em></p>
-</li>
-<li><p>🇩🇪 Apartment in Berlin: Investor plans up to 2,500 apartments and furniture stores <em>(<a href="https://www.moz.de/nachrichten/brandenburg/wohnung-in-berlin-investor-plant-bis-zu-2500-wohnungen-und-moebelhaeuser-78329904.html">MOZ.de</a>, 4 minute read)</em></p>
-</li>
-</ul>
-<hr>
-<h2 id="📅-events-today">📅 Events Today</h2>
-<ul>
-<li>🎟️ <a href="https://www.berlin.de/en/events/6279065-2842498-berliner-herbst-rummel.en.html"><em>Berlin Autumn Carnival</em></a> | September 19 - October 19, 2025 | High Sky, Anubis and more: Expect lots of fun rides at the Berlin Autumn Carvival on the fairground at Kurt-Schumacher-Damm.&nbsp;</li>
-</ul>
-<hr>
-<h2 id="💬-what-berliners-are-talking-about">💬 What Berliners Are Talking About</h2>
-<ul>
-<li><p>🗣️ <a href="https://www.reddit.com/r/berlin/comments/1nohlry/the_traffic_in_berlin_is_so_bad_now_that/"><em>The traffic in Berlin is so bad now, that commuting to and from the outskirts is sometimes quicker with the bike...</em></a> - Rush-hour gridlock in Berlin has commuters choosing bikes and public transit instead.</p>
-</li>
-<li><p>🗣️ <a href="https://www.reddit.com/r/berlinsocialclub/comments/1nokegq/warning_tech_company_in_berlin_hiring_for_mobile/"><em>⚠️ Warning: tech Company in Berlin hiring for Mobile Engineer my experience: toxic environment, unsafe for women)</em></a> - Ex-employee warns applicants about toxic Berlin startup, harassment, unpaid overtime.</p>
-</li>
-<li><p>🗣️ <a href="https://www.reddit.com/r/berlinsocialclub/comments/1nocfzo/psa_if_you_see_someone_get_assaulted_make_sure/"><em>PSA: if you see someone get assaulted, make sure the victim stays when you call the police</em></a> - If you see an assault, encourage but don&#39;t force the victim to stay.</p>
-</li>
-</ul>
-<hr>
-<p>🎨 <strong>Fun Fact:</strong> Berlin is an art lover’s dream with around <strong>290 art galleries</strong> – the highest concentration of modern art galleries in Europe.</p>
-<hr>
-<h3 id="👋-thats-a-wrap-thanks-for-reading-berlin-news-daily">👋 That&#39;s a wrap! Thanks for reading Berlin News Daily!</h3>
-<p>👉 Subscribe for free to get tomorrow’s news in your inbox.</p>
-<p>🚨 <strong>Got 3 minutes? Help shape the future of Berlin News Daily.</strong> Our 2025 reader survey is open now, and your feedback is essential. <a href="https://form.jotform.com/252590601314348">Share your thoughts here.</a> 💌</p>
-  
-      <br>
-      <br>
-
-<div class="text-center">
-<script async data-uid="7cfab03e55" src="https://berlindaily.kit.com/7cfab03e55/index.js"></script>
-</div>
-
+            <!-- Pagination Controls -->
+            <div id="paginationContainer" class="pagination-container">
+                <!-- Page buttons will be injected here -->
+            </div>
+        </main>
+        
+        <footer>
+            <script async data-uid="06e015dc85" src="https://berlindaily.kit.com/06e015dc85/index.js"></script>
+        </footer>
     </div>
+
+    <script>
+        const searchInput = document.getElementById('searchInput');
+        const filterButtonsContainer = document.getElementById('filterButtons');
+        const resultsGrid = document.getElementById('resultsGrid');
+        const noResults = document.getElementById('noResults');
+        const paginationContainer = document.getElementById('paginationContainer');
+
+        const newsletters = [
+    {
+        "title": "🏠 Berlin sublet rent-cap test, Heating costs jump, AfD overtakes Union",
+        "date": "September 24, 2025",
+        "monthYear": "Sep 2025",
+        "excerpt": "Germany’s Federal Court of Justice is hearing a Berlin case on whether the rent cap applies to sublets, after a tenant sublet a €460 apartment for €962 without permission; the landlord seeks termination.",
+        "href": "archive/20250924-berlin-sublet-rentcap-test-heating-costs-jump-afd-overtakes-union.html"
+    },
+    {
+        "title": "✈️ BER cyber delays, Berlin police overhaul, job losses soar",
+        "date": "September 23, 2025",
+        "monthYear": "Sep 2025",
+        "excerpt": "Three days after a cyberattack on IT provider Collins Aerospace, Berlin Brandenburg Airport reported widespread disruption Monday, with about 70% of departures delayed—many by over an hour—long queues, and at least one cancellation, as staff handled check-in and baggage using manual processes.",
+        "href": "archive/20250923-ber-cyber-delays-berlin-police-overhaul-job-losses-soar.html"
+    },
+    {
+        "title": "🏛️ 48-hour workweek plan, Cannabis Act backlash, Styles sub-3h marathon",
+        "date": "September 22, 2025",
+        "monthYear": "Sep 2025",
+        "excerpt": "Germany’s government plans to overhaul the Working Hours Act by replacing daily limits with a 48-hour weekly cap, prompting sharp criticism from the Hugo Sinzheimer Institute.",
+        "href": "archive/20250922-48hour-workweek-plan-cannabis-act-backlash-styles-sub3h-marathon.html"
+    },
+    {
+        "title": "🏠 Student rents +74%, Club assaults rise, Airports disrupted by cyberattack",
+        "date": "September 21, 2025",
+        "monthYear": "Sep 2025",
+        "excerpt": "A study by the research institute Empirica finds that rents for rooms in student flat-shares in Germany have risen 74% since 2012, roughly twice the increase in consumer prices, with major city gaps (about €750 in Munich versus €350 in Siegen).",
+        "href": "archive/20250921-student-rents-74-club-assaults-rise-airports-disrupted-by-cyberattack.html"
+    },
+    {
+        "title": "🌊 Berlin water shortages and recycling, rising crime hotspots, Spandau WWII bomb defused",
+        "date": "September 20, 2025",
+        "monthYear": "Sep 2025",
+        "excerpt": "Berlin is ramping up investments in modernized waterworks, wastewater recycling, and climate‑resilient trees to confront worsening water shortages as falling river and lake levels threaten shipping, industry, and drinking water supplies.",
+        "href": "archive/20250920-berlin-water-shortages-and-recycling-rising-crime-hotspots-spandau-wwii-bomb-defused.html"
+    },
+    {
+        "title": "🚨 WWII bomb off Fischerinsel, ASML opens diamond-coated wafer plant, Raid over illegal asbestos dumping",
+        "date": "September 19, 2025",
+        "monthYear": "Sep 2025",
+        "excerpt": "Berlin police discovered a suspected World War II bomb in the Spree near Fischerinsel Thursday, establishing a 500-meter exclusion zone and launching overnight evacuations; U2 service is halted between Alexanderplatz and Spittelmarkt, while shelters opened at Rathaus Mitte as thousands of residents and hotel guests were told to leave.",
+        "href": "archive/20250919-wwii-bomb-off-fischerinsel-asml-opens-diamondcoated-wafer-plant-raid-over-illegal-asbestos-dumping.html"
+    },
+    {
+        "title": "🚨 Spandau bomb defusal Sept 19, 6% Berlin-Brandenburg fare hike January, BVG autonomous buses 2035",
+        "date": "September 18, 2025",
+        "monthYear": "Sep 2025",
+        "excerpt": "Workers in Berlin’s Spandau district uncovered a 100-kilogram World War II aerial bomb on Neuendorfer Straße, with disposal scheduled for Friday, Sept. 19.",
+        "href": "archive/20250918-spandau-bomb-defusal-sept-19-6-berlinbrandenburg-fare-hike-january-bvg-autonomous-buses-2035.html"
+    },
+    {
+        "title": "🎵 Drake at Berghain, BER night‑flight curfew dispute, Berlin Marathon road closures",
+        "date": "September 17, 2025",
+        "monthYear": "Sep 2025",
+        "excerpt": "Drake reportedly slipped into Berlin’s Berghain on his day off from three shows at the Uber Arena, friend and DJ-producer Gordo wrote on Instagram: “we got in,” saying Drake danced in the crowd without security; Gordo praised the club and noted Berghain’s strict no-photo rule. (Berliner Zeitung, 1 minute read)",
+        "href": "archive/20250917-drake-at-berghain-ber-nightflight-curfew-dispute-berlin-marathon-road-closures.html"
+    },
+    {
+        "title": "⚖️ Mutombo death: police faulted, Clan brothers convicted but one released, Tegel renovation delayed over funding",
+        "date": "September 16, 2025",
+        "monthYear": "Sep 2025",
+        "excerpt": "Berlin’s state anti‑discrimination ombudsperson (LADG) has formally faulted police for the 2022 death of Kupa Illunga Medard Mutombo, who lost consciousness during a Sept. 14 Spandau intervention and died weeks later. The report says officers violated anti‑discrimination rules over his disability and language, used prone restraint that increased asphyxia risk, and lacked medical help; prosecutors are investigating five officers and the ombudsperson demands an apology, at least €45,000 compensation and systemic reform. (rbb24, 2 minute read)",
+        "href": "archive/20250916-mutombo-death-police-faulted-clan-brothers-convicted-but-one-released-tegel-renovation-delayed-over-funding.html"
+    },
+    {
+        "title": "🏥 Three Berlin knife attacks, 12,000 join pro-Palestinian rally, Berlin's first Currywurst Hawaii",
+        "date": "September 15, 2025",
+        "monthYear": "Sep 2025",
+        "excerpt": "Berlin police reported three separate overnight knife attacks in Prenzlauer Berg, Staaken, and Kreuzberg, leaving a 53-year-old and a 59-year-old hospitalized and a 44-year-old critically injured; officers arrested a suspect in Staaken and questioned another in Prenzlauer Berg, while the Kreuzberg attacker remains unknown.",
+        "href": "archive/20250915-three-berlin-knife-attacks-12000-join-propalestinian-rally-berlins-first-currywurst-hawaii.html"
+    },
+    {
+        "title": "🏛️ Huge Gaza protest in Berlin, Humboldt Forum fatal stabbing, Berlin drone grocery pilot",
+        "date": "September 14, 2025",
+        "monthYear": "Sep 2025",
+        "excerpt": "Berlin police deployed about 1,000 officers as a large Gaza protest called by Sahra Wagenknecht began at the Brandenburg Gate, with up to 15,000 participants expected.",
+        "href": "archive/20250914-huge-gaza-protest-in-berlin-humboldt-forum-fatal-stabbing-berlin-drone-grocery-pilot.html"
+    },
+    {
+        "title": "🚨 Parked car explodes in Schöneberg, Burnt woman found in playground, ICC opens 49 hours",
+        "date": "September 13, 2025",
+        "monthYear": "Sep 2025",
+        "excerpt": "A parked car exploded in Berlin’s Schöneberg overnight, seriously injuring a 22-year-old man; police and prosecutors say he survived because he wasn’t inside or next to it.",
+        "href": "archive/20250913-parked-car-explodes-in-schneberg-burnt-woman-found-in-playground-icc-opens-49-hours.html"
+    },
+    {
+        "title": "🏠 Power outage after arson, Gaza rally at Brandenburger-Tor, Three Berlin women arrested for drug smuggling",
+        "date": "September 12, 2025",
+        "monthYear": "Sep 2025",
+        "excerpt": "In Berlin’s Treptow-Köpenick, 13,700 customers remained without electricity for a third day, the grid operator said, with full restoration expected today but no precise timing.",
+        "href": "archive/20250912-power-outage-after-arson-gaza-rally-at-brandenburgertor-three-berlin-women-arrested-for-drug-smuggling.html"
+    },
+    {
+        "title": "🚇 Berlin grid arson outage hits 13,700, Munich eases apartment swaps, Ant-hill stalls 2,500 homes",
+        "date": "September 11, 2025",
+        "monthYear": "Sep 2025",
+        "excerpt": "An arson attack on two power pylons in Berlin’s Treptow-Köpenick caused a major blackout, with about 13,700 customers still without electricity Wednesday evening; grid operator Stromnetz Berlin expects full restoration during Thursday.",
+        "href": "archive/20250911-berlin-grid-arson-outage-hits-13700-munich-eases-apartment-swaps-anthill-stalls-2500-homes.html"
+    },
+    {
+        "title": "⚖️ Daltons' seven-shot leg attack trial, VeloFlow predicts greens for cyclists, Berlin-Brandenburg lag in education rankings",
+        "date": "September 10, 2025",
+        "monthYear": "Sep 2025",
+        "excerpt": "A Berlin court is trying three alleged members of the self-styled “Daltons of Berlin” for the March 30 shooting that left businessman Mustafa M., 36, with shattered leg bones; the accused shooter confessed to firing seven shots, while the others remain silent.",
+        "href": "archive/20250910-daltons-sevenshot-leg-attack-trial-veloflow-predicts-greens-for-cyclists-berlinbrandenburg-lag-in-education-rankings.html"
+    },
+    {
+        "title": "🚨 20-year-old fires at supermarkets over extortion, 10.6M adults illiterate, Raccoon cull record in Berlin",
+        "date": "September 9, 2025",
+        "monthYear": "Sep 2025",
+        "excerpt": "A 20-year-old man, identified as Alican C., went on trial in Berlin and confessed to shooting at two Eurogida supermarkets on March 3 following an extortion demand by a group calling itself the Butterflies.",
+        "href": "archive/20250909-20yearold-fires-at-supermarkets-over-extortion-106m-adults-illiterate-raccoon-cull-record-in-berlin.html"
+    },
+    {
+        "title": "⚖️ PKK leadership trial after ticket inspector blinding, Charité reports rising street violence, Serial-killer exhibition",
+        "date": "September 8, 2025",
+        "monthYear": "Sep 2025",
+        "excerpt": "Berlin’s Kammergericht opened the first trial in the city against an alleged PKK leadership figure since the group’s designation as a terrorist organization, charging Mehmet K., 50, with membership in a foreign terrorist organization and leadership roles in Germany since 2014.",
+        "href": "archive/20250908-pkk-leadership-trial-after-ticket-inspector-blinding-charit-reports-rising-street-violence-serialkiller-exhibition.html"
+    },
+    {
+        "title": "🚇 S-Bahn weekend closures for software upgrade, 240m Tempelhof skyscrapers proposed, Aurora season returns",
+        "date": "September 7, 2025",
+        "monthYear": "Sep 2025",
+        "excerpt": "Berlin’s S-Bahn suspended service on northern sections of lines S1, S2, and S8 for the weekend, with replacement buses running from Saturday 5:00 am to Monday 1:30 am.",
+        "href": "archive/20250907-sbahn-weekend-closures-for-software-upgrade-240m-tempelhof-skyscrapers-proposed-aurora-season-returns.html"
+    },
+    {
+        "title": "🚇 Shots fired at Berlin U8, Berlin tests sirens Sept 11, Major regional rail closures Sept–Dec",
+        "date": "September 6, 2025",
+        "monthYear": "Sep 2025",
+        "excerpt": "An unidentified man fired a shot at a departing U8 subway train at Berlin’s Karl-Bonhoeffer-Nervenklinik station in Reinickendorf around 9 p.m. Thursday, police said; the projectile damaged a window but did not pierce it, and the shooter fled.",
+        "href": "archive/20250906-shots-fired-at-berlin-u8-berlin-tests-sirens-sept-11-major-regional-rail-closures-septdec.html"
+    },
+    {
+        "title": "🚗 BMW hits children, Budget cuts threaten HIV prevention, Districts warn parks collapse",
+        "date": "September 5, 2025",
+        "monthYear": "Sep 2025",
+        "excerpt": "A BMW driver in Berlin’s Wedding district struck a group of 7- to 8-year-old children at a crossing Thursday, with six receiving medical attention—including three with minor injuries—and their caregiver seriously hurt; the driver was uninjured.",
+        "href": "archive/20250905-bmw-hits-children-budget-cuts-threaten-hiv-prevention-districts-warn-parks-collapse.html"
+    },
+    {
+        "title": "🚇 Neukölln ear bite at U-Bahn, EHEC outbreak infects children, Sailing drowning prompts murder trial",
+        "date": "September 4, 2025",
+        "monthYear": "Sep 2025",
+        "excerpt": "Berlin police said a 31-year-old man had part of his right ear bitten off during a dispute over headphones at the Leinestraße U-Bahn station in Neukölln on Tuesday night; the attacker fled empty-handed.",
+        "href": "archive/20250904-neuklln-ear-bite-at-ubahn-ehec-outbreak-infects-children-sailing-drowning-prompts-murder-trial.html"
+    },
+    {
+        "title": "🌡️ 75% jump in Lyme cases, Blind association sues over sidewalk e‑scooters, State offers tenant downsizing",
+        "date": "September 3, 2025",
+        "monthYear": "Sep 2025",
+        "excerpt": "Berlin recorded 41 new Lyme disease cases in the week of Aug. 18–24, bringing this year’s total to 862, 75% above the pre-pandemic median for the same period, the city’s health authority said.",
+        "href": "archive/20250903-75-jump-in-lyme-cases-blind-association-sues-over-sidewalk-escooters-state-offers-tenant-downsizing.html"
+    },
+    {
+        "title": "🏠 Rents up 30% via index leases, Homelessness spikes, ATM heist accomplice drowns",
+        "date": "September 2, 2025",
+        "monthYear": "Sep 2025",
+        "excerpt": "Berlin tenants face rent hikes up to 30% as index leases tie rents to the consumer price index, bypassing the city’s usual 15% three‑year cap, the Berliner Mieterverein warns. Index clauses let landlords raise rents with inflation—pushing the rent index higher and worsening the housing shortage—and the 2019 rent brake only applies at contract start. Tenants should verify calculations and documentation before paying; the Mieterverein urges introducing a cap on index increases. (Berliner Zeitung, 2 minute read)",
+        "href": "archive/20250902-rents-up-30-via-index-leases-homelessness-spikes-atm-heist-accomplice-drowns.html"
+    },
+    {
+        "title": "🏛️ Officer hits woman at protest, Berlin hospitals refitted as NATO hub, Refugees' trauma largely untreated",
+        "date": "September 1, 2025",
+        "monthYear": "Sep 2025",
+        "excerpt": "Berlin police are reviewing footage showing an officer repeatedly striking a woman in the face during a pro-Palestinian protest in central Berlin, after clashes between officers and demonstrators.",
+        "href": "archive/20250901-officer-hits-woman-at-protest-berlin-hospitals-refitted-as-nato-hub-refugees-trauma-largely-untreated.html"
+    },
+    {
+        "title": "🚗 A100 extension snarls traffic, few new teachers fully trained, arson at Green Party office",
+        "date": "August 31, 2025",
+        "monthYear": "Aug 2025",
+        "excerpt": "Berlin’s newly opened A100 extension toward Treptow has quickly clogged, with weekend backups and drivers taking about 20 minutes to travel the roughly 3-kilometer stretch; on Friday, officials briefly closed a tunnel to avoid stopped traffic.",
+        "href": "archive/20250831-a100-extension-snarls-traffic-few-new-teachers-fully-trained-arson-at-green-party-office.html"
+    },
+    {
+        "title": "⚖️ Welfare recipient buys €300k drugs retrial, 16% new Berlin teachers qualified, Unemployment up Berlin/Brandenburg",
+        "date": "August 30, 2025",
+        "monthYear": "Aug 2025",
+        "excerpt": "A Berlin court held a retrial of a man previously sentenced to three years and six months for large-scale drug purchases revealed via EncroChat, with prosecutors now seeking four years and the defense three.",
+        "href": "archive/20250830-welfare-recipient-buys-300k-drugs-retrial-16-new-berlin-teachers-qualified-unemployment-up-berlinbrandenburg.html"
+    }
+];
+
+        // --- STATE ---
+        let currentPage = 1;
+        const itemsPerPage = 12;
+
+        function displayNewsletters(filteredNewsletters) {
+            resultsGrid.innerHTML = '';
+            
+            const startIndex = (currentPage - 1) * itemsPerPage;
+            const endIndex = startIndex + itemsPerPage;
+            const paginatedItems = filteredNewsletters.slice(startIndex, endIndex);
+
+            if (paginatedItems.length === 0 && newsletters.length > 0) {
+                noResults.classList.remove('hidden');
+            } else {
+                noResults.classList.add('hidden');
+            }
+
+            paginatedItems.forEach(newsletter => {
+                const card = document.createElement('a');
+                card.href = newsletter.href;
+                card.className = 'card';
+                card.innerHTML = `
+                    <div class="card-content">
+                        <p class="date">${newsletter.date}</p>
+                        <h4>${newsletter.title}</h4>
+                        <p class="card-excerpt">${newsletter.excerpt}</p>
+                    </div>
+                    <div class="read-more-btn">Read More</div>
+                `;
+                resultsGrid.appendChild(card);
+            });
+            
+            setupPagination(filteredNewsletters);
+        }
+        
+        function setupPagination(filteredNewsletters) {
+            paginationContainer.innerHTML = '';
+            const pageCount = Math.ceil(filteredNewsletters.length / itemsPerPage);
+
+            if (pageCount <= 1) return;
+
+            for (let i = 1; i <= pageCount; i++) {
+                const btn = document.createElement('button');
+                btn.innerText = i;
+                btn.className = 'page-btn';
+                if (i === currentPage) {
+                    btn.classList.add('active');
+                }
+                btn.addEventListener('click', () => {
+                    currentPage = i;
+                    displayNewsletters(filteredNewsletters);
+                });
+                paginationContainer.appendChild(btn);
+            }
+        }
+
+        function generateFilterButtons() {
+            const monthYears = [...new Set(newsletters.map(item => item.monthYear))];
+            
+            monthYears.sort((a, b) => new Date(b) - new Date(a));
+
+            let buttonsHTML = '<button class="filter-btn active" data-filter="all">All</button>';
+            monthYears.forEach(my => {
+                buttonsHTML += `<button class="filter-btn" data-filter="${my}">${my}</button>`;
+            });
+
+            filterButtonsContainer.innerHTML = buttonsHTML;
+
+            document.querySelectorAll('.filter-btn').forEach(button => {
+                button.addEventListener('click', () => {
+                    document.querySelector('.filter-btn.active').classList.remove('active');
+                    button.classList.add('active');
+                    filterAndDisplay();
+                });
+            });
+        }
+        
+        function filterAndDisplay() {
+            const searchTerm = searchInput.value.toLowerCase();
+            const activeFilterButton = document.querySelector('.filter-btn.active');
+            const selectedFilter = activeFilterButton ? activeFilterButton.dataset.filter : 'all';
+
+            const filtered = newsletters.filter(newsletter => {
+                const matchesSearch = newsletter.title.toLowerCase().includes(searchTerm) || newsletter.excerpt.toLowerCase().includes(searchTerm);
+                const matchesFilter = (selectedFilter === 'all' || newsletter.monthYear === selectedFilter);
+                return matchesSearch && matchesFilter;
+            });
+            
+            currentPage = 1;
+            displayNewsletters(filtered);
+        }
+
+        // --- INITIALIZATION ---
+        document.addEventListener('DOMContentLoaded', () => {
+            if(newsletters.length > 0) {
+                generateFilterButtons();
+                filterAndDisplay();
+            } else {
+                noResults.classList.remove('hidden');
+            }
+            searchInput.addEventListener('input', filterAndDisplay);
+        });
+
+    </script>
 </body>
 </html>

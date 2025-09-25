@@ -7,7 +7,7 @@ const { JSDOM } = require('jsdom');
 
 const archiveDir = path.join(__dirname, '../archive');
 const archiveTemplatePath = path.join(__dirname, '../assets/newsletter_archive_template.html');
-const outputFilePath = path.join(__dirname, '../index.html');
+const outputFilePath = path.join(__dirname, '../newsletter_archive.html');
 
 // 1. Check if template file exists
 if (!fs.existsSync(archiveTemplatePath)) {
