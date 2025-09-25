@@ -1,24 +1,24 @@
 # This is a GitHub Actions workflow file.
 # It should be placed in the .github/workflows/ directory of your repository.
-# This workflow automatically updates the newsletter_archive.html page on every push to the main branch.
+# This workflow automatically updates the newsletter archive and sitemap.
 
-name: Build Newsletter Archive
+name: Build Newsletter Archive & Sitemap
 
 on:
   push:
     branches:
       - main # This triggers the workflow on pushes to the 'main' branch
     paths:
-      - 'archive/**' # Only run if a file in the 'archive' folder changes
-      - 'assets/**' # Only run if a file in the 'assets' folder changes
+      - 'archive/**' # Trigger on new newsletters
+      - 'assets/newsletter_archive_template.html' # Trigger on template changes
 
-  workflow_dispatch:
+  workflow_dispatch: # Allows manual triggering from the Actions tab
 
 jobs:
   build:
     runs-on: ubuntu-latest # Use the latest version of Ubuntu as the runner
     
-    # Add this permissions block to allow the action to push code
+    # Grant permissions for the action to push code back to the repository
     permissions:
         contents: write
 
@@ -32,23 +32,23 @@ jobs:
           node-version: '20' # Specify the Node.js version
 
       - name: Install dependencies
-        run: npm install # Assumes you have a package.json with dependencies like 'jsdom'
+        run: npm install # Assumes you have a package.json
 
-      - name: Run the build script
-        run: node scripts/build.js # Execute the script that updates the archive
+      - name: Run the archive build script
+        run: node scripts/build.js # Execute the script that updates the archive page
+      
+      - name: Run the sitemap generation script
+        run: node scripts/generate-sitemap.js # Execute the script that creates the sitemap
 
       - name: Commit and push changes
         run: |
             git config --global user.name 'github-actions[bot]'
             git config --global user.email 'github-actions[bot]@users.noreply.github.com'
         
-            echo "--- Running git status to see modified files ---"
-            git status
-        
-            echo "--- Running git diff to see specific changes ---"
-            git diff newsletter_archive.html
-        
-            # Now, try to add and commit the file
-            git add newsletter_archive.html
-            git diff --staged --quiet || git commit -m "Automated: Update newsletter archive"
+            # Add both the updated archive and the new sitemap
+            git add newsletter_archive.html sitemap.xml
+
+            # Commit only if there are actual changes to the files
+            git diff --staged --quiet || git commit -m "Automated: Update archive and sitemap"
+            
             git push
