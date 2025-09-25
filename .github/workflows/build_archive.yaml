@@ -9,8 +9,9 @@ on:
     branches:
       - main # This triggers the workflow on pushes to the 'main' branch
     paths:
-      - 'archive/**' # Onl.y run if a file in the 'archive' folder changes
-      
+      - 'archive/**' # Only run if a file in the 'archive' folder changes
+      - 'assets/**' # Only run if a file in the 'assets' folder changes
+
   workflow_dispatch:
 
 jobs:
