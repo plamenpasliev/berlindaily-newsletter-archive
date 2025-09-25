@@ -34,7 +34,7 @@ fs.readdir(archiveDir, (err, files) => {
             const titleTag = doc.querySelector('title');
             let title = titleTag ? titleTag.textContent : 'Untitled Newsletter';
             
-            // --- UPDATED: Remove suffix from title ---
+            // Remove suffix from title
             title = title.replace(' - Berlin News Daily', '').trim();
 
             const dateMeta = doc.querySelector('meta[name="publish-date"]');
@@ -42,8 +42,8 @@ fs.readdir(archiveDir, (err, files) => {
             
             const date = dateObj ? dateObj.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) : 'No Date';
             
-            // --- UPDATED: Extract Month-Year tag ---
-            const monthYear = dateObj ? dateObj.toLocaleString('en-US', { month: 'short', year: 'numeric' }).replace(' ', '-') : 'N/A';
+            // --- UPDATED: Extract Month-Year tag with a space ---
+            const monthYear = dateObj ? dateObj.toLocaleString('en-US', { month: 'short', year: 'numeric' }) : 'N/A';
             
             const excerptElement = doc.querySelector('p.excerpt');
             let excerpt = excerptElement ? excerptElement.textContent.trim() : 'No excerpt available.';
@@ -74,4 +74,3 @@ fs.readdir(archiveDir, (err, files) => {
 
     console.log(`Successfully updated newsletter archive with ${newslettersData.length} issues.`);
 });
-
