@@ -123,11 +123,6 @@
             justify-content: space-between; 
             height: auto; /* Variable height on mobile by default */
         }
-        @media (min-width: 500px) {
-            .card {
-                height: 420px; /* Restored fixed height for desktop for alignment */
-            }
-        }
         .card:hover {
             box-shadow: 0 4px 12px rgba(0,0,0,0.08);
         }
@@ -143,7 +138,6 @@
             font-size: 1.25rem;
             font-weight: 600;
             margin: 0.25rem 0 0.5rem 0;
-            min-height: 95px; 
             display: -webkit-box;
             -webkit-box-orient: vertical;
             -webkit-line-clamp: 3;
@@ -151,13 +145,26 @@
             text-overflow: ellipsis;
         }
         .card .card-excerpt {
-            min-height: 205px; /* Approx 8 lines of text + margin */
             display: -webkit-box;
             -webkit-box-orient: vertical;
             -webkit-line-clamp: 8; /* Updated line clamp */
             overflow: hidden;
             text-overflow: ellipsis;
         }
+        
+        /* Desktop card structure */
+        @media (min-width: 500px) {
+            .card {
+                height: 420px; /* Fixed height for alignment */
+            }
+            .card h4 {
+                min-height: 95px; /* Ensures consistent title block height */
+            }
+            .card .card-excerpt {
+                min-height: 205px; /* Ensures consistent excerpt block height */
+            }
+        }
+
         .card-content {
             flex-grow: 1; 
         }
