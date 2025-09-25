@@ -118,10 +118,15 @@
             transition: box-shadow 0.3s ease;
             color: inherit;
             text-decoration: none;
-            display: flex; /* Key for button alignment */
-            flex-direction: column; /* Key for button alignment */
-            justify-content: space-between; /* Key for button alignment */
-            height: 420px; /* Fixed height for consistent layout */
+            display: flex; 
+            flex-direction: column; 
+            justify-content: space-between; 
+            height: auto; /* Variable height on mobile by default */
+        }
+        @media (min-width: 500px) {
+            .card {
+                height: 420px; /* Restored fixed height for desktop for alignment */
+            }
         }
         .card:hover {
             box-shadow: 0 4px 12px rgba(0,0,0,0.08);
@@ -138,8 +143,7 @@
             font-size: 1.25rem;
             font-weight: 600;
             margin: 0.25rem 0 0.5rem 0;
-            min-height: 95px; /* Approx 3 lines of text + margin */
-            /* --- Line Clamp for Title --- */
+            min-height: 95px; 
             display: -webkit-box;
             -webkit-box-orient: vertical;
             -webkit-line-clamp: 3;
@@ -147,16 +151,15 @@
             text-overflow: ellipsis;
         }
         .card .card-excerpt {
-            min-height: 128px; /* Approx 5 lines of text + margin */
-            /* --- Line Clamp for Excerpt --- */
+            min-height: 205px; /* Approx 8 lines of text + margin */
             display: -webkit-box;
             -webkit-box-orient: vertical;
-            -webkit-line-clamp: 8;
+            -webkit-line-clamp: 8; /* Updated line clamp */
             overflow: hidden;
             text-overflow: ellipsis;
         }
         .card-content {
-            flex-grow: 1; /* Pushes button to the bottom */
+            flex-grow: 1; 
         }
         .read-more-btn {
             background-color: #111827;
@@ -167,7 +170,7 @@
             font-weight: 500;
             text-decoration: none;
             display: inline-block;
-            align-self: flex-start; /* Prevents button from stretching */
+            align-self: flex-start;
             margin-top: 1rem;
             transition: background-color 0.2s;
         }
@@ -499,12 +502,10 @@
             }
         }
 
-        // --- UPDATED: Function to generate month-year filter buttons ---
         function generateFilterButtons() {
             const monthYears = [...new Set(newsletters.map(item => item.monthYear))];
             
-            // Sort the month-year tags chronologically
-            monthYears.sort((a, b) => new Date(b.replace('-', ' ')) - new Date(a.replace('-', ' ')));
+            monthYears.sort((a, b) => new Date(b) - new Date(a));
 
             let buttonsHTML = '<button class="filter-btn active" data-filter="all">All</button>';
             monthYears.forEach(my => {
