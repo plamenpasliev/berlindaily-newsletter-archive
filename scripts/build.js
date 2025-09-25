@@ -48,11 +48,6 @@ fs.readdir(archiveDir, (err, files) => {
             const excerptElement = doc.querySelector('p.excerpt');
             let excerpt = excerptElement ? excerptElement.textContent.trim() : 'No excerpt available.';
             
-            // Character limit for excerpt
-            if (excerpt.length > 150) {
-                excerpt = excerpt.substring(0, 150) + '...';
-            }
-            
             const href = `archive/${file}`; // Link to the actual issue file
 
             return { title, date, monthYear, excerpt, href };
