@@ -74,7 +74,7 @@
             margin-top: 16px;
             flex-wrap: wrap;
         }
-        .year-btn {
+        .filter-btn {
             background-color: #f3f4f6;
             border: 1px solid #d1d5db;
             padding: 8px 16px;
@@ -83,34 +83,34 @@
             font-weight: 500;
             transition: all 0.2s;
         }
-        .year-btn:hover {
+        .filter-btn:hover {
             background-color: #e5e7eb;
         }
-        .year-btn.active {
+        .filter-btn.active {
             background-color: #111827;
             color: white;
             border-color: #111827;
         }
         
-        /* Updated Responsive Grid */
+        /* --- UPDATED: Responsive Grid --- */
         .newsletter-grid {
             display: grid;
-            grid-template-columns: 1fr; /* 1 column by default */
+            grid-template-columns: 1fr; /* 1 column < 600px */
             gap: 24px;
             margin-bottom: 32px;
         }
-        @media (min-width: 400px) {
+        @media (min-width: 600px) {
             .newsletter-grid {
                 grid-template-columns: repeat(2, 1fr); /* 2 columns */
             }
         }
-        @media (min-width: 700px) {
+        @media (min-width: 900px) {
             .newsletter-grid {
                 grid-template-columns: repeat(3, 1fr); /* 3 columns */
             }
         }
 
-        /* --- Updated Card Styles --- */
+        /* --- UPDATED: Card Styles --- */
         .card {
             border: 1px solid #e5e7eb;
             padding: 1.5rem;
@@ -121,6 +121,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            height: 380px; /* Fixed height for consistent layout */
         }
         .card:hover {
             box-shadow: 0 4px 12px rgba(0,0,0,0.08);
@@ -137,11 +138,16 @@
             font-size: 1.25rem;
             font-weight: 600;
             margin: 0.25rem 0 0.5rem 0;
+            height: 40%; /* Fixed height for title */
+            overflow: hidden;
+        }
+        .card .card-excerpt {
+             height: 50%; /* Fixed height for excerpt */
+             overflow: hidden;
         }
         .card-content {
             flex-grow: 1;
         }
-        /* --- ADDED: Read More Button Style --- */
         .read-more-btn {
             background-color: #111827;
             color: white;
@@ -212,7 +218,7 @@
             <div class="search-container">
                 <input type="text" id="searchInput" class="search-input" placeholder="Search by title or keyword...">
                 <div id="filterButtons" class="filter-buttons">
-                    <!-- Year buttons will be dynamically generated here -->
+                    <!-- Filter buttons will be dynamically generated here -->
                 </div>
             </div>
 
@@ -265,12 +271,11 @@
                 const card = document.createElement('a');
                 card.href = newsletter.href;
                 card.className = 'card';
-                // --- UPDATED: Card structure with button ---
                 card.innerHTML = `
                     <div class="card-content">
                         <p class="date">${newsletter.date}</p>
                         <h4>${newsletter.title}</h4>
-                        <p>${newsletter.excerpt}</p>
+                        <p class="card-excerpt">${newsletter.excerpt}</p>
                     </div>
                     <div class="read-more-btn">Read More</div>
                 `;
@@ -301,20 +306,23 @@
             }
         }
 
-        function generateYearButtons() {
-            const years = [...new Set(newsletters.map(item => item.year))];
-            years.sort().reverse();
+        // --- UPDATED: Function to generate month-year filter buttons ---
+        function generateFilterButtons() {
+            const monthYears = [...new Set(newsletters.map(item => item.monthYear))];
+            
+            // Sort the month-year tags chronologically
+            monthYears.sort((a, b) => new Date(b.replace('-', ' ')) - new Date(a.replace('-', ' ')));
 
-            let buttonsHTML = '<button class="year-btn active" data-year="all">All</button>';
-            years.forEach(year => {
-                buttonsHTML += `<button class="year-btn" data-year="${year}">${year}</button>`;
+            let buttonsHTML = '<button class="filter-btn active" data-filter="all">All</button>';
+            monthYears.forEach(my => {
+                buttonsHTML += `<button class="filter-btn" data-filter="${my}">${my}</button>`;
             });
 
             filterButtonsContainer.innerHTML = buttonsHTML;
 
-            document.querySelectorAll('.year-btn').forEach(button => {
+            document.querySelectorAll('.filter-btn').forEach(button => {
                 button.addEventListener('click', () => {
-                    document.querySelector('.year-btn.active').classList.remove('active');
+                    document.querySelector('.filter-btn.active').classList.remove('active');
                     button.classList.add('active');
                     filterAndDisplay();
                 });
@@ -323,13 +331,13 @@
         
         function filterAndDisplay() {
             const searchTerm = searchInput.value.toLowerCase();
-            const activeYearButton = document.querySelector('.year-btn.active');
-            const selectedYear = activeYearButton ? activeYearButton.dataset.year : 'all';
+            const activeFilterButton = document.querySelector('.filter-btn.active');
+            const selectedFilter = activeFilterButton ? activeFilterButton.dataset.filter : 'all';
 
             const filtered = newsletters.filter(newsletter => {
                 const matchesSearch = newsletter.title.toLowerCase().includes(searchTerm) || newsletter.excerpt.toLowerCase().includes(searchTerm);
-                const matchesYear = (selectedYear === 'all' || newsletter.year === selectedYear);
-                return matchesSearch && matchesYear;
+                const matchesFilter = (selectedFilter === 'all' || newsletter.monthYear === selectedFilter);
+                return matchesSearch && matchesFilter;
             });
             
             currentPage = 1;
@@ -339,7 +347,7 @@
         // --- INITIALIZATION ---
         document.addEventListener('DOMContentLoaded', () => {
             if(newsletters.length > 0) {
-                generateYearButtons();
+                generateFilterButtons();
                 filterAndDisplay();
             } else {
                 noResults.classList.remove('hidden');
@@ -350,3 +358,4 @@
     </script>
 </body>
 </html>
+

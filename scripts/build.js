@@ -6,9 +6,8 @@ const path = require('path');
 const { JSDOM } = require('jsdom');
 
 const archiveDir = path.join(__dirname, '../archive');
-// --- UPDATED PATHS ---
-const archiveTemplatePath = path.join(__dirname, '../assets/newsletter_archive_template.html'); // READ from the template
-const outputFilePath = path.join(__dirname, '../newsletter_archive.html'); // WRITE to the final file
+const archiveTemplatePath = path.join(__dirname, '../assets/newsletter_archive_template.html');
+const outputFilePath = path.join(__dirname, '../newsletter_archive.html');
 
 // 1. Check if template file exists
 if (!fs.existsSync(archiveTemplatePath)) {
@@ -33,24 +32,30 @@ fs.readdir(archiveDir, (err, files) => {
 
             // Extract the required data using a more robust structure
             const titleTag = doc.querySelector('title');
-            const title = titleTag ? titleTag.textContent : 'Untitled Newsletter';
+            let title = titleTag ? titleTag.textContent : 'Untitled Newsletter';
             
+            // --- UPDATED: Remove suffix from title ---
+            title = title.replace(' - Berlin News Daily', '').trim();
+
             const dateMeta = doc.querySelector('meta[name="publish-date"]');
-            const date = dateMeta ? new Date(dateMeta.content).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) : 'No Date';
-            const year = dateMeta ? new Date(dateMeta.content).getFullYear().toString() : 'N/A';
+            const dateObj = dateMeta ? new Date(dateMeta.content) : null;
             
-            // Grabs only the paragraph with class="excerpt".
+            const date = dateObj ? dateObj.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) : 'No Date';
+            
+            // --- UPDATED: Extract Month-Year tag ---
+            const monthYear = dateObj ? dateObj.toLocaleString('en-US', { month: 'short', year: 'numeric' }).replace(' ', '-') : 'N/A';
+            
             const excerptElement = doc.querySelector('p.excerpt');
             let excerpt = excerptElement ? excerptElement.textContent.trim() : 'No excerpt available.';
             
-            // --- ADDED: Character limit for excerpt ---
+            // Character limit for excerpt
             if (excerpt.length > 150) {
                 excerpt = excerpt.substring(0, 150) + '...';
             }
             
             const href = `archive/${file}`; // Link to the actual issue file
 
-            return { title, date, year, excerpt, href };
+            return { title, date, monthYear, excerpt, href };
         })
         .sort((a, b) => new Date(b.date) - new Date(a.date)); // Sort by date, newest first
 
@@ -69,3 +74,4 @@ fs.readdir(archiveDir, (err, files) => {
 
     console.log(`Successfully updated newsletter archive with ${newslettersData.length} issues.`);
 });
+
