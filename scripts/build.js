@@ -1,5 +1,5 @@
 // This script reads all individual newsletter HTML files from the 'archive' directory,
-// extracts metadata, and injects it into the 'newsletter_archive.html' template.
+// extracts metadata, and injects it into the 'newsletter_archive_template.html' template and creates "index.html".
 
 const fs = require('fs');
 const path = require('path');
@@ -7,7 +7,7 @@ const { JSDOM } = require('jsdom');
 
 const archiveDir = path.join(__dirname, '../archive');
 const archiveTemplatePath = path.join(__dirname, '../assets/newsletter_archive_template.html');
-const outputFilePath = path.join(__dirname, '../newsletter_archive.html');
+const outputFilePath = path.join(__dirname, '../index.html');
 
 // 1. Check if template file exists
 if (!fs.existsSync(archiveTemplatePath)) {
