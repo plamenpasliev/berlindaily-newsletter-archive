@@ -46,7 +46,7 @@ jobs:
             git config --global user.email 'github-actions[bot]@users.noreply.github.com'
         
             # Add both the updated archive and the new sitemap
-            git add newsletter_archive.html sitemap.xml
+            git add index.html sitemap.xml
 
             # Commit only if there are actual changes to the files
             git diff --staged --quiet || git commit -m "Automated: Update archive and sitemap"

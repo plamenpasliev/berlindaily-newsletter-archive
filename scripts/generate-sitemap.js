@@ -21,13 +21,6 @@ sitemapXml += `
     <priority>1.0</priority>
   </url>
 `;
-sitemapXml += `
-  <url>
-    <loc>${baseUrl}/newsletter_archive.html</loc>
-    <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
-    <priority>0.9</priority>
-  </url>
-`;
 
 // 2. Read all files from the 'archive' directory and add them
 fs.readdir(archiveDir, (err, files) => {
