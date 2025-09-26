@@ -3,7 +3,7 @@
 
   <url>
     <loc>https://newsletter.berlindaily.org/</loc>
-    <lastmod>2025-09-25</lastmod>
+    <lastmod>2025-09-26</lastmod>
     <priority>1.0</priority>
   </url>
 
@@ -214,6 +214,12 @@
   <url>
     <loc>https://newsletter.berlindaily.org/archive/20250925-broadcasting-fee-exemptions-mass-naturalization-questions-onethird-drink-harmfully.html</loc>
     <lastmod>2025-09-25</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://newsletter.berlindaily.org/archive/20250926-planet-labs-factory-syphilis-cases-rise-wildberger-urges-ai-loosening.html</loc>
+    <lastmod>2025-09-26</lastmod>
     <priority>0.8</priority>
   </url>
 </urlset>
