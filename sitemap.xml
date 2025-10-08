@@ -3,7 +3,7 @@
 
   <url>
     <loc>https://newsletter.berlindaily.org/</loc>
-    <lastmod>2025-10-07</lastmod>
+    <lastmod>2025-10-08</lastmod>
     <priority>1.0</priority>
   </url>
 
@@ -268,6 +268,12 @@
   <url>
     <loc>https://newsletter.berlindaily.org/archive/20251007-digital-startup-services-low-blood-reserves-government-ai-push.html</loc>
     <lastmod>2025-10-07</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://newsletter.berlindaily.org/archive/20251008-fourth-hamas-suspect-in-berlin-night-of-vaccinations-nazi-tunnels.html</loc>
+    <lastmod>2025-10-08</lastmod>
     <priority>0.8</priority>
   </url>
 </urlset>
