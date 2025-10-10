@@ -3,7 +3,7 @@
 
   <url>
     <loc>https://newsletter.berlindaily.org/</loc>
-    <lastmod>2025-10-09</lastmod>
+    <lastmod>2025-10-10</lastmod>
     <priority>1.0</priority>
   </url>
 
@@ -280,6 +280,12 @@
   <url>
     <loc>https://newsletter.berlindaily.org/archive/20251009-rising-covid-cases-end-of-fast-citizenship-taliban-flag.html</loc>
     <lastmod>2025-10-09</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://newsletter.berlindaily.org/archive/20251010-hotel-data-leak-n8n-raise-180m-powergrid-attacks.html</loc>
+    <lastmod>2025-10-10</lastmod>
     <priority>0.8</priority>
   </url>
 </urlset>
