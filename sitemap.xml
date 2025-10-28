@@ -3,7 +3,7 @@
 
   <url>
     <loc>https://newsletter.berlindaily.org/</loc>
-    <lastmod>2025-10-27</lastmod>
+    <lastmod>2025-10-28</lastmod>
     <priority>1.0</priority>
   </url>
 
@@ -352,6 +352,12 @@
   <url>
     <loc>https://newsletter.berlindaily.org/archive/20251027-bird-flu-tree-vandalism-spring-drought.html</loc>
     <lastmod>2025-10-27</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://newsletter.berlindaily.org/archive/20251028-homeless-tours-womens-protection-cuts-expropriation-push.html</loc>
+    <lastmod>2025-10-28</lastmod>
     <priority>0.8</priority>
   </url>
 </urlset>
