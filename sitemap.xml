@@ -3,7 +3,7 @@
 
   <url>
     <loc>https://newsletter.berlindaily.org/</loc>
-    <lastmod>2025-10-30</lastmod>
+    <lastmod>2025-10-31</lastmod>
     <priority>1.0</priority>
   </url>
 
@@ -370,6 +370,12 @@
   <url>
     <loc>https://newsletter.berlindaily.org/archive/20251030-lap-cafs-drug-lab-discovered-a100-closures.html</loc>
     <lastmod>2025-10-30</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://newsletter.berlindaily.org/archive/20251031-entrylevel-struggles-sadistic-dentists-energy-sharing.html</loc>
+    <lastmod>2025-10-31</lastmod>
     <priority>0.8</priority>
   </url>
 </urlset>
