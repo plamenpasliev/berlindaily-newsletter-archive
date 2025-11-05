@@ -3,7 +3,7 @@
 
   <url>
     <loc>https://newsletter.berlindaily.org/</loc>
-    <lastmod>2025-11-04</lastmod>
+    <lastmod>2025-11-05</lastmod>
     <priority>1.0</priority>
   </url>
 
@@ -382,6 +382,12 @@
   <url>
     <loc>https://newsletter.berlindaily.org/archive/20251104-bomb-equipment-detained-ber-noise-protection-military-draft-checks.html</loc>
     <lastmod>2025-11-04</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://newsletter.berlindaily.org/archive/20251105-contaminated-water-excessive-rents-increased-waste-fines.html</loc>
+    <lastmod>2025-11-05</lastmod>
     <priority>0.8</priority>
   </url>
 </urlset>
