@@ -20,7 +20,6 @@
     <link rel="canonical" href="https://newsletter.berlindaily.org/" />
     <meta http-equiv="Cache-Control" content="public, max-age=31536000" />
     <link rel="preload" as="image" href="/assets/berlin-news-daily-logo.webp" fetchpriority="high" />
-    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZV7ZPE3F1G"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -29,7 +28,6 @@
 
         gtag('config', 'G-ZV7ZPE3F1G');
     </script>
-    <!-- This template uses inline CSS to match your existing newsletter style -->
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -260,25 +258,18 @@
 
         <main>
             <h1>Berlin News in English: The Newsletter Archive</h1>
-            <!-- Search and Filter Section -->
             <div class="search-container">
                 <input type="text" id="searchInput" class="search-input" placeholder="Search by title or keyword...">
                 <div id="filterButtons" class="filter-buttons">
-                    <!-- Filter buttons will be dynamically generated here -->
                 </div>
             </div>
 
-            <!-- Results Grid -->
             <div id="resultsGrid" class="newsletter-grid">
-                <!-- Newsletter cards will be injected here by JavaScript -->
             </div>
             
-            <!-- No Results Message -->
             <p id="noResults" class="text-center hidden" style="color: #6b7280; padding: 40px 0;">No newsletters found matching your criteria.</p>
 
-            <!-- Pagination Controls -->
             <div id="paginationContainer" class="pagination-container">
-                <!-- Page buttons will be injected here -->
             </div>
         </main>
         
@@ -353,17 +344,25 @@
         }
 
         function generateFilterButtons() {
+            // Get all unique month-year strings.
+            // Since the build script already sorts 'newsletters' from newest to oldest,
+            // this 'monthYears' array will be in the correct order.
             const monthYears = [...new Set(newsletters.map(item => item.monthYear))];
             
-            monthYears.sort((a, b) => new Date(b) - new Date(a));
+            // --- NEW: Get just the 3 most recent months ---
+            const last3Months = monthYears.slice(0, 3);
 
+            // Start with the 'All' button
             let buttonsHTML = '<button class="filter-btn active" data-filter="all">All</button>';
-            monthYears.forEach(my => {
+            
+            // --- MODIFIED: Loop over 'last3Months' instead of 'monthYears' ---
+            last3Months.forEach(my => {
                 buttonsHTML += `<button class="filter-btn" data-filter="${my}">${my}</button>`;
             });
 
             filterButtonsContainer.innerHTML = buttonsHTML;
 
+            // This part is unchanged and correctly attaches event listeners
             document.querySelectorAll('.filter-btn').forEach(button => {
                 button.addEventListener('click', () => {
                     document.querySelector('.filter-btn.active').classList.remove('active');
