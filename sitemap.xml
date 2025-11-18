@@ -3,7 +3,7 @@
 
   <url>
     <loc>https://newsletter.berlindaily.org/</loc>
-    <lastmod>2025-11-17</lastmod>
+    <lastmod>2025-11-18</lastmod>
     <priority>1.0</priority>
   </url>
 
@@ -436,6 +436,12 @@
   <url>
     <loc>https://newsletter.berlindaily.org/archive/20251117-snipers-in-berlin-friedrichstrasse-revamp-nuclear-reactors.html</loc>
     <lastmod>2025-11-17</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://newsletter.berlindaily.org/archive/20251118-illegal-waste-facial-recognition-bvg-reports.html</loc>
+    <lastmod>2025-11-18</lastmod>
     <priority>0.8</priority>
   </url>
 </urlset>
