@@ -3,7 +3,7 @@
 
   <url>
     <loc>https://newsletter.berlindaily.org/</loc>
-    <lastmod>2025-11-20</lastmod>
+    <lastmod>2025-11-21</lastmod>
     <priority>1.0</priority>
   </url>
 
@@ -448,6 +448,12 @@
   <url>
     <loc>https://newsletter.berlindaily.org/archive/20251120-civil-servant-pay-discontinued-trains-pensions-disputes.html</loc>
     <lastmod>2025-11-20</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://newsletter.berlindaily.org/archive/20251121-school-terror-threat-grli-security-ev-charging.html</loc>
+    <lastmod>2025-11-21</lastmod>
     <priority>0.8</priority>
   </url>
 </urlset>
