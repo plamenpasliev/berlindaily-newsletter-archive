@@ -3,7 +3,7 @@
 
   <url>
     <loc>https://newsletter.berlindaily.org/</loc>
-    <lastmod>2025-11-28</lastmod>
+    <lastmod>2025-12-01</lastmod>
     <priority>1.0</priority>
   </url>
 
@@ -484,6 +484,12 @@
   <url>
     <loc>https://newsletter.berlindaily.org/archive/20251128-excessive-spending-child-poverty-farright-ideas.html</loc>
     <lastmod>2025-11-28</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://newsletter.berlindaily.org/archive/20251201-transit-app-errors-qr-drug-deals-nursing-staff-relief.html</loc>
+    <lastmod>2025-12-01</lastmod>
     <priority>0.8</priority>
   </url>
 </urlset>
