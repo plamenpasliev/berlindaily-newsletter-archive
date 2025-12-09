@@ -3,7 +3,7 @@
 
   <url>
     <loc>https://newsletter.berlindaily.org/</loc>
-    <lastmod>2025-12-08</lastmod>
+    <lastmod>2025-12-09</lastmod>
     <priority>1.0</priority>
   </url>
 
@@ -514,6 +514,12 @@
   <url>
     <loc>https://newsletter.berlindaily.org/archive/20251208-new-surveillance-law-s15-launch-berlins-governance-crisis.html</loc>
     <lastmod>2025-12-08</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://newsletter.berlindaily.org/archive/20251209-tax-fraud-highrises-electric-cars.html</loc>
+    <lastmod>2025-12-09</lastmod>
     <priority>0.8</priority>
   </url>
 </urlset>
