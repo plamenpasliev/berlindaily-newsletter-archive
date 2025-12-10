@@ -3,7 +3,7 @@
 
   <url>
     <loc>https://newsletter.berlindaily.org/</loc>
-    <lastmod>2025-12-09</lastmod>
+    <lastmod>2025-12-10</lastmod>
     <priority>1.0</priority>
   </url>
 
@@ -520,6 +520,12 @@
   <url>
     <loc>https://newsletter.berlindaily.org/archive/20251209-tax-fraud-highrises-electric-cars.html</loc>
     <lastmod>2025-12-09</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://newsletter.berlindaily.org/archive/20251210-minimum-wage-rise-rental-socialization-student-protests.html</loc>
+    <lastmod>2025-12-10</lastmod>
     <priority>0.8</priority>
   </url>
 </urlset>
