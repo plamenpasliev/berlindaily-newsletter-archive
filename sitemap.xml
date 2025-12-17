@@ -3,7 +3,7 @@
 
   <url>
     <loc>https://newsletter.berlindaily.org/</loc>
-    <lastmod>2025-12-15</lastmod>
+    <lastmod>2025-12-17</lastmod>
     <priority>1.0</priority>
   </url>
 
@@ -538,6 +538,12 @@
   <url>
     <loc>https://newsletter.berlindaily.org/archive/20251215-ukraine-peace-talks-public-service-strike-adhd-surge.html</loc>
     <lastmod>2025-12-15</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://newsletter.berlindaily.org/archive/20251217-housing-racism-deportations-continue-subletting-scrutiny.html</loc>
+    <lastmod>2025-12-17</lastmod>
     <priority>0.8</priority>
   </url>
 </urlset>
