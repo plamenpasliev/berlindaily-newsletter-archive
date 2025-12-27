@@ -1,0 +1,139 @@
+/* --- GLOBAL STYLES --- */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background: white;
+    min-height: 100vh;
+}
+.container {
+    max-width: 650px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #fff;
+}
+.header {
+    text-align: center; /* Fixed typo from 'text-center' */
+    padding: 32px 0;
+}
+.logo {
+    width: 120px;
+    height: 120px;
+    transition: opacity 0.3s;
+    margin: 0 auto 32px auto;
+    display: block;
+}
+.logo:hover {
+    opacity: 0.8;
+}
+h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: black;
+    margin-bottom: 32px;
+}
+h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 1.5rem 0 1rem 0;
+}
+h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 1.25rem 0 0.75rem 0;
+}
+p {
+    margin: 1rem 0;
+}
+a {
+    color: #2563eb;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+hr {
+    border: none;
+    border-top: 1px solid #e5e7eb;
+    margin: 1.5rem 0;
+}
+ul {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+}
+li {
+    margin: 0.5rem 0;
+}
+.text-center {
+    text-align: center;
+}
+@media (min-width: 768px) {
+    .logo {
+        width: 150px;
+        height: 150px;
+    }
+    h1 {
+        font-size: 2.5rem;
+    }
+}
+
+/* --- POPUP CTA STYLES --- */
+.popup-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(3px);
+}
+.popup-content {
+    position: relative;
+    background: #ffffff;
+    padding: 30px 20px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    max-width: 480px; 
+    width: 90%; 
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    animation: fadeIn 0.4s ease-out;
+}
+/* Optional: Hide Kit branding if it breaks layout */
+.formkit-powered-by-convertkit-container {
+    display: none !important; 
+}
+.popup-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    background: #f0f0f0;
+    border-radius: 50%;
+    font-size: 20px;
+    line-height: 28px;
+    cursor: pointer;
+    color: #555;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    z-index: 10001;
+}
+.popup-close:hover {
+    background: #e0e0e0;
+    color: #000;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
