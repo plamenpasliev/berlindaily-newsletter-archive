@@ -3,7 +3,7 @@
 
   <url>
     <loc>https://newsletter.berlindaily.org/</loc>
-    <lastmod>2026-01-02</lastmod>
+    <lastmod>2026-01-05</lastmod>
     <priority>1.0</priority>
   </url>
 
@@ -580,6 +580,12 @@
   <url>
     <loc>https://newsletter.berlindaily.org/archive/20260102-new-years-aftermath-policy-changes-climate-protection.html</loc>
     <lastmod>2026-01-02</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://newsletter.berlindaily.org/archive/20260105-power-cuts-severe-frosts-flight-cancellations.html</loc>
+    <lastmod>2026-01-05</lastmod>
     <priority>0.8</priority>
   </url>
 </urlset>
