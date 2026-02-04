@@ -3,7 +3,7 @@
 
   <url>
     <loc>https://newsletter.berlindaily.org/</loc>
-    <lastmod>2026-02-02</lastmod>
+    <lastmod>2026-02-04</lastmod>
     <priority>1.0</priority>
   </url>
 
@@ -658,6 +658,12 @@
   <url>
     <loc>https://newsletter.berlindaily.org/archive/20260202-bvg-strike-free-gravel-sidewalk-salt.html</loc>
     <lastmod>2026-02-02</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://newsletter.berlindaily.org/archive/20260204-more-strikes-poverty-risk-frozen-body-found.html</loc>
+    <lastmod>2026-02-04</lastmod>
     <priority>0.8</priority>
   </url>
 </urlset>
