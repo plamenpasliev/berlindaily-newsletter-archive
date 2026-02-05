@@ -40,13 +40,16 @@ jobs:
       - name: Run the sitemap generation script
         run: node scripts/generate-sitemap.js # Execute the script that creates the sitemap
 
+      - name: Run the RSS feed generation script
+        run: node scripts/generate-rss.js
+
       - name: Commit and push changes
         run: |
             git config --global user.name 'github-actions[bot]'
             git config --global user.email 'github-actions[bot]@users.noreply.github.com'
         
             # Add both the updated archive and the new sitemap
-            git add index.html sitemap.xml
+            git add index.html sitemap.xml feed.xml
 
             # Commit only if there are actual changes to the files
             git diff --staged --quiet || git commit -m "Automated: Update archive and sitemap"
