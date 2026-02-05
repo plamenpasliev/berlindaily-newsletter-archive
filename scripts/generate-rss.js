@@ -60,8 +60,8 @@ fs.readdir(archiveDir, (err, files) => {
     // Sort by Date (Newest First)
     posts.sort((a, b) => b.date - a.date);
 
-    // Generate XML Items (Limit to 50)
-    posts.slice(0, 50).forEach(post => {
+    // Generate XML Items (Limit to 150)
+    posts.slice(0, 150).forEach(post => {
         rssXml += `
   <item>
     <title><![CDATA[${post.title}]]></title>
