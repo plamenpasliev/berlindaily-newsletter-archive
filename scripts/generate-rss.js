@@ -26,7 +26,7 @@ fs.readdir(archiveDir, (err, files) => {
     const posts = [];
 
     files
-        .filter(file => file.endsWith('.html'))
+        .filter(file => file.endsWith('.html') && file !== 'latest.html') // Exclude the latest.html file
         .forEach(file => {
             const filePath = path.join(archiveDir, file);
             const fileContent = fs.readFileSync(filePath, 'utf-8');
