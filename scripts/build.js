@@ -23,7 +23,7 @@ fs.readdir(archiveDir, (err, files) => {
     }
 
     const newslettersData = files
-        .filter(file => file.endsWith('.html')) // Only process HTML files
+        .filter(file => file.endsWith('.html') && file !== 'latest.html') // Exclude the latest.html file
         .map(file => {
             const filePath = path.join(archiveDir, file);
             const fileContent = fs.readFileSync(filePath, 'utf-8');
