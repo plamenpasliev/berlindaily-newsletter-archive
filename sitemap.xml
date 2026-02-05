@@ -668,8 +668,14 @@
   </url>
 
   <url>
+    <loc>https://newsletter.berlindaily.org/archive/20260205-more-strikes-poverty-risk-frozen-body-found.html</loc>
+    <lastmod>2026-02-05</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
     <loc>https://newsletter.berlindaily.org/archive/latest.html</loc>
-    <lastmod>2026-02-04</lastmod>
+    <lastmod>2026-02-05</lastmod>
     <priority>0.8</priority>
   </url>
 </urlset>
