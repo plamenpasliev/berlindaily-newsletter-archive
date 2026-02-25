@@ -3,7 +3,7 @@
 
   <url>
     <loc>https://newsletter.berlindaily.org/</loc>
-    <lastmod>2026-02-23</lastmod>
+    <lastmod>2026-02-25</lastmod>
     <priority>1.0</priority>
   </url>
 
@@ -716,8 +716,14 @@
   </url>
 
   <url>
+    <loc>https://newsletter.berlindaily.org/archive/20260225-48h-bvg-strike-citizenship-rejections-trade-deficits.html</loc>
+    <lastmod>2026-02-25</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
     <loc>https://newsletter.berlindaily.org/archive/latest.html</loc>
-    <lastmod>2026-02-23</lastmod>
+    <lastmod>2026-02-25</lastmod>
     <priority>0.8</priority>
   </url>
 </urlset>
