@@ -3,7 +3,7 @@
 
   <url>
     <loc>https://newsletter.berlindaily.org/</loc>
-    <lastmod>2026-03-23</lastmod>
+    <lastmod>2026-03-25</lastmod>
     <priority>1.0</priority>
   </url>
 
@@ -788,8 +788,14 @@
   </url>
 
   <url>
+    <loc>https://newsletter.berlindaily.org/archive/20260325-police-raids-increased-safety-water-shortage.html</loc>
+    <lastmod>2026-03-25</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
     <loc>https://newsletter.berlindaily.org/archive/latest.html</loc>
-    <lastmod>2026-03-23</lastmod>
+    <lastmod>2026-03-25</lastmod>
     <priority>0.8</priority>
   </url>
 </urlset>
