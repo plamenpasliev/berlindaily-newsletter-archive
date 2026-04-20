@@ -3,7 +3,7 @@
 
   <url>
     <loc>https://newsletter.berlindaily.org/</loc>
-    <lastmod>2026-04-17</lastmod>
+    <lastmod>2026-04-20</lastmod>
     <priority>1.0</priority>
   </url>
 
@@ -848,8 +848,14 @@
   </url>
 
   <url>
+    <loc>https://newsletter.berlindaily.org/archive/20260420-tick-on-the-rise-power-cuts-asylum-applications.html</loc>
+    <lastmod>2026-04-20</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
     <loc>https://newsletter.berlindaily.org/archive/latest.html</loc>
-    <lastmod>2026-04-17</lastmod>
+    <lastmod>2026-04-20</lastmod>
     <priority>0.8</priority>
   </url>
 </urlset>
