@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         data-test-id="beehiiv-embed" 
                         frameborder="0" 
                         scrolling="no" 
-                        style="width: 650px; height: 339px; margin: 0; border-radius: 0px !important; background-color: transparent; box-shadow: 0 0 #0000;">
+                        style="width: 600px; height: 339px; margin: 0; border-radius: 0px !important; background-color: transparent; box-shadow: 0 0 #0000;">
                 </iframe>
             </div>
         </div>
